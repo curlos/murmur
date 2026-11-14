@@ -150,21 +150,20 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
                 <div className="bg-white dark:bg-black p-3 border-b border-[#C8B9B1] dark:border-gray-700">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                      <XIcon
-                        className="h-6 w-6 cursor-pointer text-gray-700 dark:text-gray-400"
-                        onClick={onClose}
-                      />
-                      <div className="ml-4 text-xl font-bold">
+                      <button type="button" aria-label="Close" onClick={onClose}>
+                        <XIcon className="h-6 w-6 cursor-pointer text-gray-700 dark:text-gray-400" />
+                      </button>
+                      <Dialog.Title as="h2" className="ml-4 text-xl font-bold">
                         Crop {imageType === 'profile' ? 'Profile Picture' : 'Banner'}
-                      </div>
+                      </Dialog.Title>
                     </div>
 
-                    <div
+                    <button type="button"
                       className="bg-white text-black font-bold px-5 py-2 rounded-full cursor-pointer hover:bg-gray-100"
                       onClick={handleApplyCrop}
                     >
                       Apply
-                    </div>
+                    </button>
                   </div>
                 </div>
 

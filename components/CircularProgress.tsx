@@ -15,7 +15,7 @@ const CircularProgress = ({ current, max, size = 20, strokeWidth = 2 }: Props) =
 
   const getColor = () => {
     if (percentage >= 100) return '#ef4444'; // red-500
-    return '#F0532B'; // lightblue-500 (brand accent)
+    return '#D43F18'; // lightblue-500 (brand accent)
   };
 
   return (
@@ -52,7 +52,7 @@ const CircularProgress = ({ current, max, size = 20, strokeWidth = 2 }: Props) =
       </svg>
       {percentage >= 90 && (
         <div
-          className={`absolute text-xs font-medium ${percentage >= 100 ? 'text-red-500' : 'text-amber-600'}`}
+          className={`absolute text-xs font-medium ${percentage >= 100 ? 'text-red-600 dark:text-red-500' : 'text-amber-700 dark:text-amber-600'}`}
           style={{ fontSize: '8px' }}
         >
           {max - current}

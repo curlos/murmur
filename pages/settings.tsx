@@ -39,7 +39,7 @@ const Settings = () => {
 
             <div className="p-6">
               <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-4">Display</h3>
+                <h2 className="text-lg font-semibold mb-4">Display</h2>
 
                 <div className="flex gap-2 items-center justify-between p-4 border border-gray-400 dark:border-gray-700 rounded-lg">
                   <div>
@@ -54,7 +54,7 @@ const Settings = () => {
               {/* Only show Account section if user is logged in and is a "credentials-based" account. NO GMAIL ACCOUNTS ARE ALLOWED TO CHANGE EMAIL or PASSWORD. */}
               {session && session.user && hasPassword && (
                 <div className="mb-6">
-                  <h3 className="text-lg font-semibold mb-4">Account</h3>
+                  <h2 className="text-lg font-semibold mb-4">Account</h2>
 
                   <div className="space-y-4">
                     <EmailAccordion session={session} update={update} />
@@ -76,6 +76,8 @@ const ThemeToggle = () => {
   return (
     <div className="flex items-center space-x-4">
       <button
+        type="button"
+        aria-pressed={theme === 'light'}
         onClick={() => {
           setTheme('light');
           localStorage.theme = 'light';
@@ -91,6 +93,8 @@ const ThemeToggle = () => {
       </button>
 
       <button
+        type="button"
+        aria-pressed={theme === 'dark'}
         onClick={() => {
           setTheme('dark');
           localStorage.theme = 'dark';
@@ -167,6 +171,8 @@ const EmailAccordion = ({ session, update }) => {
   return (
     <div className="border border-gray-400 dark:border-gray-700 rounded-lg">
       <button
+        type="button"
+        aria-expanded={isEmailAccordionOpen}
         onClick={() => setIsEmailAccordionOpen(!isEmailAccordionOpen)}
         className={`w-full p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 ${
           isEmailAccordionOpen ? 'rounded-t-lg' : 'rounded-lg'
@@ -215,7 +221,7 @@ const EmailAccordion = ({ session, update }) => {
               </div>
 
               {emailError && (
-                <div className="text-red-500 text-sm">{emailError}</div>
+                <div role="alert" className="text-red-600 dark:text-red-500 text-sm">{emailError}</div>
               )}
 
               {emailSuccess && (
@@ -308,6 +314,8 @@ const PasswordAccordion = () => {
   return (
     <div className="border border-gray-400 dark:border-gray-700 rounded-lg">
       <button
+        type="button"
+        aria-expanded={isPasswordAccordionOpen}
         onClick={() => setIsPasswordAccordionOpen(!isPasswordAccordionOpen)}
         className={`w-full p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 ${
           isPasswordAccordionOpen ? 'rounded-t-lg' : 'rounded-lg'
@@ -383,7 +391,7 @@ const PasswordAccordion = () => {
               </div>
 
               {passwordError && (
-                <div className="text-red-500 text-sm">{passwordError}</div>
+                <div role="alert" className="text-red-600 dark:text-red-500 text-sm">{passwordError}</div>
               )}
 
               {passwordSuccess && (

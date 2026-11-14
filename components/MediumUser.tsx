@@ -1,6 +1,7 @@
 import { collection, DocumentData, getDocs, query, where } from 'firebase/firestore';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { authModalState } from '../atoms/atom';
@@ -19,6 +20,7 @@ interface Props {
  */
 const MediumUser = ({ userID, user }: Props) => {
   const { data: session } = useSession();
+  const router = useRouter();
   const [followed, setFollowed] = useState(false);
   const [_authModalOpen, setAuthModalOpen] = useRecoilState(authModalState);
 
@@ -73,7 +75,7 @@ const MediumUser = ({ userID, user }: Props) => {
   const renderFollowButton = () => {
     return (
       !session || userID !== session.user.uid ? (
-        <div className="font-semibold text-sm px-4 py-2 text-black bg-white rounded-full" onClick={handleFollowClick}>{followed ? 'Following' : 'Follow'}</div>
+        <button type="button" className="font-semibold text-sm px-4 py-2 text-black bg-white rounded-full" onClick={handleFollowClick}>{followed ? 'Following' : 'Follow'}</button>
       ) : (
         // If the user is not found (meaning their account has been deleted), then don't render anything.
         null
@@ -83,19 +85,17 @@ const MediumUser = ({ userID, user }: Props) => {
 
   return (
     user ? (
-        <Link href={`/profile/${user.tag}`}>
-          <div className="p-3 flex justify-between items-center text-base cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800">
+        // The whole row is clickable with a mouse; the name is the real link for keyboard and screen reader users.
+        <div className="p-3 flex justify-between items-center text-base cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800" onClick={() => router.push(`/profile/${user.tag}`)}>
             <div className="flex gap-2">
-              <Link href={`/profile/${user.tag}`}>
-                <img src={user.profilePic} alt={`${user.tag}'s profile pic`} className="rounded-full h-[55px] w-[55px] object-cover cursor-pointer" />
-              </Link>
+              <img src={user.profilePic} alt="" className="rounded-full h-[55px] w-[55px] object-cover cursor-pointer" />
 
               <div>
                 <Link href={`/profile/${user.tag}`}>
-                  <div className="flex items-center font-semibold cursor-pointer hover:underline">
-                    <div className="truncate max-w-[200px]">{user.name}</div>
-                    <HiBadgeCheck className="h-[18px] w-[18px] ml-[2px] text-lightblue-500" />
-                  </div>
+                  <a className="flex items-center font-semibold cursor-pointer hover:underline" onClick={(e) => e.stopPropagation()}>
+                    <span className="truncate max-w-[200px]">{user.name}</span>
+                    <HiBadgeCheck className="h-[18px] w-[18px] ml-[2px] text-lightblue-500" title="Verified" />
+                  </a>
                 </Link>
                 <div className="text-gray-700 dark:text-gray-400">@{user.tag}</div>
                 <div className="truncate max-w-[230px] sm:max-w-[300px] md:max-w-[400px]">{user.bio}</div>
@@ -109,8 +109,7 @@ const MediumUser = ({ userID, user }: Props) => {
             <div className="hidden sm:block">
               {renderFollowButton()}
             </div>
-          </div>
-        </Link>
+        </div>
       ) : null
   );
 };

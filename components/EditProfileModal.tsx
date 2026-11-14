@@ -317,14 +317,14 @@ const EditProfileModal = () => {
                 <div className="bg-white dark:bg-black p-3 border-b border-[#C8B9B1] dark:border-gray-700">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                      <XIcon className="h-6 w-6 cursor-pointer text-gray-700 dark:text-gray-400" onClick={(val) => {
-                        setIsOpen(false);
-                      }} />
+                      <button type="button" aria-label="Close" onClick={() => setIsOpen(false)}>
+                        <XIcon className="h-6 w-6 cursor-pointer text-gray-700 dark:text-gray-400" />
+                      </button>
 
-                      <div className="ml-4 text-xl font-bold">Edit Profile</div>
+                      <Dialog.Title as="h2" className="ml-4 text-xl font-bold">Edit Profile</Dialog.Title>
                     </div>
 
-                    <div
+                    <button type="button" disabled={loading}
                       className={`bg-white text-black font-bold px-5 py-2 rounded-full ${loading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
                       onClick={loading ? undefined : updateUserProfile}
                     >
@@ -334,14 +334,14 @@ const EditProfileModal = () => {
                           Saving...
                         </div>
                       ) : 'Save'}
-                    </div>
+                    </button>
                   </div>
                 </div>
 
                 <div className="h-[70vh] overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 dark:scrollbar-thumb-gray-600 dark:scrollbar-track-gray-800">
 
                   <div className="">
-                    <div
+                    <button type="button" aria-label="Change banner" disabled={loading || processingImage}
                       className={`w-full h-[140px] sm:h-[200px] xl:h-[225px] relative flex items-center justify-center overflow-hidden bg-black ${(loading || processingImage) ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
                       onClick={(loading || processingImage) ? undefined : () => bannerFilePickerRef.current.click()}
                     >
@@ -361,9 +361,9 @@ const EditProfileModal = () => {
                         accept="image/jpeg,image/jpg,image/png,image/webp,image/heic,image/heif"
                         onChange={(e) => changePic(e, 'banner')}
                       />
-                    </div>
+                    </button>
 
-                    <div
+                    <button type="button" aria-label="Change profile picture" disabled={loading || processingImage}
                       className={`mt-[-56px] h-[112px] w-[112px] ml-2 rounded-full relative flex items-center justify-center border-4 border-white dark:border-black overflow-hidden z-50 bg-black ${(loading || processingImage) ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
                       onClick={(loading || processingImage) ? undefined : () => profilePicFilePickerRef.current.click()}
                     >
@@ -383,25 +383,26 @@ const EditProfileModal = () => {
                         accept="image/jpeg,image/jpg,image/png,image/webp,image/heic,image/heif"
                         onChange={(e) => changePic(e, 'profile')}
                       />
-                    </div>
+                    </button>
 
 
                   </div>
 
                   {imageError && (
-                    <div className="mx-3 mt-3 bg-red-50 dark:bg-red-900/20 border border-red-500 text-red-600 dark:text-red-400 px-3 py-2 rounded flex items-start gap-2">
+                    <div role="alert" className="mx-3 mt-3 bg-red-50 dark:bg-red-900/20 border border-red-500 text-red-600 dark:text-red-400 px-3 py-2 rounded flex items-start gap-2">
                       <span className="text-sm">{imageError}</span>
                     </div>
                   )}
 
                   <div className="p-3 space-y-4">
-                    <div className="p-2 border border-gray-700 space-y-1 rounded">
+                    <div className="p-2 border border-gray-700 space-y-1 rounded focus-within:border-lightblue-500">
                       <div className="text-sm text-gray-700 dark:text-gray-400 flex justify-between">
                         <div>Name</div>
                         <div>{name.length} / 50</div>
                       </div>
                       <input
-                        className="bg-white text-black dark:text-white dark:bg-black rounded w-full focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+                        aria-label="Name"
+                                                className="bg-white text-black dark:text-white dark:bg-black rounded w-full focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                         value={name}
                         disabled={loading}
                         onChange={(e) => {
@@ -413,13 +414,14 @@ const EditProfileModal = () => {
                     </div>
 
                     <div>
-                      <div className="p-2 border border-gray-700 space-y-1 rounded">
+                      <div className="p-2 border border-gray-700 space-y-1 rounded focus-within:border-lightblue-500">
                         <div className="text-sm text-gray-700 dark:text-gray-400 flex justify-between">
                           <div>Username</div>
                           <div>{tag.length} / 15</div>
                         </div>
                         <input
-                          className="bg-white text-black dark:text-white dark:bg-black rounded w-full focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+                          aria-label="Username"
+                                                    className="bg-white text-black dark:text-white dark:bg-black rounded w-full focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                           value={tag}
                           disabled={loading}
                           onChange={(e) => {
@@ -431,17 +433,18 @@ const EditProfileModal = () => {
                       </div>
 
                       {usernameErrorMessage && (
-                        <div className="mt-1 ml-2 text-red-500 text-sm">{usernameErrorMessage}</div>
+                        <div role="alert" className="mt-1 ml-2 text-red-600 dark:text-red-500 text-sm">{usernameErrorMessage}</div>
                       )}
                     </div>
 
-                    <div className="p-2 border border-gray-700 space-y-1 rounded">
+                    <div className="p-2 border border-gray-700 space-y-1 rounded focus-within:border-lightblue-500">
                       <div className="text-sm text-gray-700 dark:text-gray-400 flex justify-between">
                         <div>Bio</div>
                         <div>{bio.length} / 160</div>
                       </div>
                       <input
-                        className="w-full bg-white text-black dark:text-white dark:bg-black focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+                        aria-label="Bio"
+                                                className="w-full bg-white text-black dark:text-white dark:bg-black focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                         value={bio}
                         placeholder="Add your bio"
                         disabled={loading}
@@ -453,13 +456,14 @@ const EditProfileModal = () => {
                       />
                     </div>
 
-                    <div className="p-2 border border-[#C8B9B1] border-gray-700 space-y-1 rounded">
+                    <div className="p-2 border border-[#C8B9B1] border-gray-700 space-y-1 rounded focus-within:border-lightblue-500">
                       <div className="text-sm text-gray-700 dark:text-gray-400 flex justify-between">
                         <div>Location</div>
                         <div>{location.length} / 30</div>
                       </div>
                       <input
-                        className="bg-white text-black dark:text-white dark:bg-black rounded w-full focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+                        aria-label="Location"
+                                                className="bg-white text-black dark:text-white dark:bg-black rounded w-full focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                         value={location}
                         disabled={loading}
                         onChange={(e) => {
@@ -470,13 +474,14 @@ const EditProfileModal = () => {
                       />
                     </div>
 
-                    <div className="p-2 border border-[#C8B9B1] border-gray-700 space-y-1 rounded">
+                    <div className="p-2 border border-[#C8B9B1] border-gray-700 space-y-1 rounded focus-within:border-lightblue-500">
                       <div className="text-sm text-gray-700 dark:text-gray-400 flex justify-between">
                         <div>Website</div>
                         <div>{website.length} / 100</div>
                       </div>
                       <input
-                        className="bg-white text-black dark:text-white dark:bg-black rounded w-full focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+                        aria-label="Website"
+                                                className="bg-white text-black dark:text-white dark:bg-black rounded w-full focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                         value={website}
                         disabled={loading}
                         onChange={(e) => {

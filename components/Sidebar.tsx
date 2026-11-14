@@ -16,6 +16,7 @@ import { colorThemeState, newTweetModalState, searchModalState, authModalState }
 import { useRouter } from "next/router";
 import { FaPen, FaSearch } from "react-icons/fa";
 import MurmurLogo from "./MurmurLogo";
+import Link from "next/link";
 
 /**
  * @description - Renders the sidebar (only on DESKTOP) that shows the most common pages a user could go to as well as actions they could take such as "Home", "Search", "Bookmarks", "Profile", "Logout", "New Tweet" and information about them such as their profile pic, name and username. The mobile equivalent is the "SidenavDrawer" component.
@@ -50,18 +51,20 @@ const Sidebar = () => {
   const showLoginAndSignupButtons = !session || !session.user
 
   return (
-    <div className={`${theme} hidden sm:flex flex-col sticky top-0 h-screen px-4 pt-4 xl:overflow-auto scrollbar-hide border-r border-gray-400 dark:border-gray-700 w-[80px] xl:w-[280px] py-4`}>
+    <nav aria-label="Primary" className={`${theme} hidden sm:flex flex-col sticky top-0 h-screen px-4 pt-4 xl:overflow-auto scrollbar-hide border-r border-gray-400 dark:border-gray-700 w-[80px] xl:w-[280px] py-4`}>
       <div className="flex flex-col justify-start items-center xl:items-start space-y-6 flex-grow">
-        <div className="cursor-pointer" onClick={() => router.push('/')}>
-          <MurmurLogo className="h-[30px] w-[30px] text-lightblue-500" />
-        </div>
+        <Link href="/">
+          <a aria-label="Murmur home" className="cursor-pointer">
+            <MurmurLogo className="h-[30px] w-[30px] text-lightblue-500" />
+          </a>
+        </Link>
 
         <SidebarLink text="Home" Icon={HomeIcon} IconSolid={HomeIconSolid} active={activeLink === 'home'} />
 
-        <div className={`flex items-center space-x-2 text-xl cursor-pointer`} onClick={() => setSearchModalOpen(true)}>
+        <button type="button" className={`flex items-center space-x-2 text-xl cursor-pointer`} onClick={() => setSearchModalOpen(true)}>
           <FaSearch className="h-7 w-7 cursor-pointer" />
-          <div className="hidden xl:block">Search</div>
-        </div>
+          <span className="sr-only xl:not-sr-only">Search</span>
+        </button>
 
         <SidebarLink text="News" Icon={NewspaperIcon} IconSolid={NewspaperIconSolid} active={activeLink === 'news'} />
 
@@ -92,7 +95,7 @@ const Sidebar = () => {
         </button>
 
         {/* This is for mobile which by default will show the pen button to write a post. I could remove it if the user is not logged in but for the purpose of the site, I think it'd be better to leave it there and link to the auth page if the user wants to tweet. */}
-        <div className="text-white bg-lightblue-500 flex justify-center items-center rounded-full p-4 xl:hidden cursor-pointer" onClick={() => {
+        <button type="button" aria-label="Post" className="text-white bg-lightblue-500 flex justify-center items-center rounded-full p-4 xl:hidden cursor-pointer" onClick={() => {
           if (!session) {
             setAuthModalOpen(true);
             return;
@@ -100,13 +103,13 @@ const Sidebar = () => {
           setIsOpen(true);
         }}>
           <FaPen className="h-5 w-5" />
-        </div>
+        </button>
       </div>
 
       <div className="hidden sm:block">
         <ProfileButton />
       </div>
-    </div>
+    </nav>
   );
 };
 

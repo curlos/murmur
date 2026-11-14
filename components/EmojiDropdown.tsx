@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Transition } from '@headlessui/react';
+import { Popover, Transition } from '@headlessui/react';
 import { EmojiHappyIcon } from '@heroicons/react/outline';
 import { Picker } from "emoji-mart";
 import "emoji-mart/css/emoji-mart.css";
@@ -15,12 +15,13 @@ const EmojiDropdown: React.FC<EmojiDropdownProps> = ({ onEmojiSelect }) => {
 
   return (
     <div className="relative inline-block text-left bg-transparent">
-      <Menu>
+      {/* A Popover (not a Menu) so keyboard users can Tab into the picker's search box and emoji buttons. */}
+      <Popover>
         {({ open }) => (
           <>
-            <Menu.Button as="div" className="icon cursor-pointer">
+            <Popover.Button type="button" aria-label="Add emoji" className="block icon cursor-pointer">
               <EmojiHappyIcon className="h-7 w-7 hoverAnimation" />
-            </Menu.Button>
+            </Popover.Button>
 
             <Transition
               show={open}
@@ -31,8 +32,9 @@ const EmojiDropdown: React.FC<EmojiDropdownProps> = ({ onEmojiSelect }) => {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items
+              <Popover.Panel
                 static
+                focus
                 className="absolute left-0 mt-2 origin-top-left shadow-gray-800 shadow-lg outline-none border border-[#C8B9B1] dark:border-gray-700 z-[100] rounded-2xl"
               >
                 <div className="bg-white dark:bg-black rounded-2xl w-full h-full">
@@ -47,11 +49,11 @@ const EmojiDropdown: React.FC<EmojiDropdownProps> = ({ onEmojiSelect }) => {
                     theme={theme as string}
                   />
                 </div>
-              </Menu.Items>
+              </Popover.Panel>
             </Transition>
           </>
         )}
-      </Menu>
+      </Popover>
     </div>
   );
 };

@@ -68,7 +68,7 @@ const Feed = () => {
       <div className={`bg-white dark:bg-black border-b border-[#C8B9B1] dark:border-gray-700 p-3 sticky top-0 z-40`}>
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <h2 className="font-bold">{router.query.query ? `Search results for: ${router.query.query}` : 'Home'}</h2>
+            <h1 className="font-bold">{router.query.query ? `Search results for: ${router.query.query}` : 'Home'}</h1>
             {router.query.query && (
               <button
                 onClick={() => router.push('/')}

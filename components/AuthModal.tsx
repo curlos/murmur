@@ -57,15 +57,17 @@ export const AuthModal = () => {
             <div className="inline-block bg-white dark:bg-black rounded-2xl text-left overflow-hidden shadow-xl transform transition-all my-8 align-top max-w-md w-[95vw] lg:w-[400px]">
               <div className="bg-white dark:bg-black p-3 border-b border-[#C8B9B1] dark:border-gray-700">
                 <div>
-                  <XIcon className="h-7 w-7 cursor-pointer text-gray-700 dark:text-gray-400 dark:text-white hover:text-gray-500" onClick={handleClose} />
+                  <button type="button" aria-label="Close" onClick={handleClose}>
+                    <XIcon className="h-7 w-7 cursor-pointer text-gray-700 dark:text-gray-400 dark:text-white hover:text-gray-500" />
+                  </button>
                 </div>
               </div>
 
               <div className="bg-white dark:bg-black p-6 text-center">
-                <h2 className="text-2xl font-bold text-black dark:text-white mb-4 flex items-center justify-center gap-2">
+                <Dialog.Title as="h2" className="text-2xl font-bold text-black dark:text-white mb-4 flex items-center justify-center gap-2">
                   <MurmurLogo className="h-8 w-8 text-lightblue-500" />
                   Join Murmur today
-                </h2>
+                </Dialog.Title>
                 <p className="text-gray-700 dark:text-gray-400 mb-6">
                   Sign up or log in to like, repost, bookmark, and reply to posts.
                 </p>

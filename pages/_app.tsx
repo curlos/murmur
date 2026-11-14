@@ -1,9 +1,12 @@
 import '../styles/globals.css';
 import { SessionProvider } from "next-auth/react";
 import { RecoilRoot } from 'recoil';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { colorThemeState } from '../atoms/atom';
+
+// Recoil 0.5's types were written before React 18 stopped giving components an implicit "children" prop, so they don't declare it.
+const RecoilRootWithChildren = RecoilRoot as React.FC<{ children: React.ReactNode }>;
 
 // Component to initialize theme from localStorage
 const ThemeInitializer = () => {
@@ -41,12 +44,12 @@ export default function App({
 }) {
   return (
     <SessionProvider session={session}>
-      <RecoilRoot>
+      <RecoilRootWithChildren>
         <ThemeInitializer />
         <ThemeWrapper>
           <Component {...pageProps} />
         </ThemeWrapper>
-      </RecoilRoot>
+      </RecoilRootWithChildren>
     </SessionProvider>
   );
 }

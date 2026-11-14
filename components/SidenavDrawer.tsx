@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   UserIcon,
   LogoutIcon,
@@ -26,7 +26,18 @@ const SidenavDrawer = () => {
   const theme = useRecoilValue(colorThemeState);
   const [_activeLink, setActiveLink] = useState('home');
   const router = useRouter();
+  const drawerRef = useRef<HTMLElement>(null);
 
+  // Move keyboard focus into the drawer when it opens and let "Escape" close it.
+  useEffect(() => {
+    if (!isOpen) return;
+    drawerRef.current?.focus();
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, setIsOpen]);
 
   useEffect(() => {
     if (router.pathname.startsWith('/bookmarks')) {
@@ -40,30 +51,30 @@ const SidenavDrawer = () => {
 
   return (
     <div className={`${theme} ${!isOpen ? 'hidden' : ''} sm:hidden fixed z-50 w-screen max-w-full h-screen bg-gray-500 bg-opacity-40`} onClick={() => setIsOpen(false)}>
-      <aside className={`transform z-50 top-0 right-0 bg-white text-black dark:bg-black dark:text-white fixed h-full ease-in-out transition-all duration-1000 ${isOpen ? 'translate-x-0' : 'translate-x-full'} w-10/12 xl:w-10/12`} onClick={(e) => e.stopPropagation()}>
+      <aside ref={drawerRef} tabIndex={-1} role="dialog" aria-label="Menu" className={`outline-none transform z-50 top-0 right-0 bg-white text-black dark:bg-black dark:text-white fixed h-full ease-in-out transition-all duration-1000 ${isOpen ? 'translate-x-0' : 'translate-x-full'} w-10/12 xl:w-10/12`} onClick={(e) => e.stopPropagation()}>
         <div className="p-5 text-2xl font-medium flex flex-col justify-between h-screen">
           <div className="space-y-2">
             <Link href="/">
-              <div className="flex items-center gap-4 cursor-pointer" onClick={() => setIsOpen(false)}>
+              <a className="flex items-center gap-4 cursor-pointer" onClick={() => setIsOpen(false)}>
                 <FaHome className="h-7 w-7" />
                 Home
-              </div>
+              </a>
             </Link>
 
             <Link href="/news">
-              <div className="flex items-center gap-4 cursor-pointer" onClick={() => setIsOpen(false)}>
+              <a className="flex items-center gap-4 cursor-pointer" onClick={() => setIsOpen(false)}>
                 <NewspaperIcon className="h-7 w-7" />
                 News
-              </div>
+              </a>
             </Link>
 
             {/* Only show if the user is logged in. */}
             {session && session.user && (
               <Link href="/bookmarks">
-                <div className="flex items-center gap-4 cursor-pointer" onClick={() => setIsOpen(false)}>
+                <a className="flex items-center gap-4 cursor-pointer" onClick={() => setIsOpen(false)}>
                   <FiBookmark className="h-7 w-7" />
                   Bookmarks
-                </div>
+                </a>
               </Link>
             )}
 
@@ -71,54 +82,54 @@ const SidenavDrawer = () => {
             {/* Only show if the user is logged in. */}
             {session && session.user && (
               <Link href={`/profile/${session.user.tag}`}>
-                <div className="flex items-center gap-4 cursor-pointer" onClick={() => setIsOpen(false)}>
+                <a className="flex items-center gap-4 cursor-pointer" onClick={() => setIsOpen(false)}>
                   <UserIcon className="h-7 w-7" />
                   Profile
-                </div>
+                </a>
               </Link>
             )}
 
             {/* Only show if the user is logged in. */}
             {session && session.user && (
-              <div className={`flex items-center gap-4 cursor-pointer`} onClick={() => {
+              <button type="button" className={`flex items-center gap-4 cursor-pointer`} onClick={() => {
                 signOut({ callbackUrl: 'http://localhost:3000/auth' });
                 setIsOpen(false);
               }}>
                 <LogoutIcon className="h-[30px] w-[30px]" />
-                <div className="text-black dark:text-white">Logout</div>
-              </div>
+                <span className="text-black dark:text-white">Logout</span>
+              </button>
             )}
 
             {/* Only show if the user is NOT logged in. */}
             {!session && (
               <Link href="/auth">
-                <div className="flex items-center gap-4 cursor-pointer" onClick={() => setIsOpen(false)}>
+                <a className="flex items-center gap-4 cursor-pointer" onClick={() => setIsOpen(false)}>
                   <LoginIcon className="h-7 w-7" />
                   Login
-                </div>
+                </a>
               </Link>
             )}
 
             {/* Only show if the user is NOT logged in. */}
             {!session && (
               <Link href="/auth?sign-up=true">
-                <div className="flex items-center gap-4 cursor-pointer" onClick={() => setIsOpen(false)}>
+                <a className="flex items-center gap-4 cursor-pointer" onClick={() => setIsOpen(false)}>
                   <UserIcon className="h-7 w-7" />
                   Sign Up
-                </div>
+                </a>
               </Link>
             )}
 
             {/* Settings - show for both logged in and non-logged in users */}
             <Link href="/settings">
-              <div className="flex items-center gap-4 cursor-pointer" onClick={() => setIsOpen(false)}>
+              <a className="flex items-center gap-4 cursor-pointer" onClick={() => setIsOpen(false)}>
                 <CogIcon className="h-7 w-7" />
                 Settings
-              </div>
+              </a>
             </Link>
           </div>
 
-          <ProfileButton onMenuItemClick={() => setIsOpen(false)} />
+          <ProfileButton showDetails onMenuItemClick={() => setIsOpen(false)} />
 
         </div>
 

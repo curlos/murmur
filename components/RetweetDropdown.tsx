@@ -8,6 +8,7 @@ interface RetweetDropdownProps {
   onQuote: () => void;
   children: React.ReactNode;
   disableQuote?: boolean;
+  label?: string;
 }
 
 const handleRetweetClick = (e: React.MouseEvent, onRetweet: () => void) => {
@@ -28,14 +29,15 @@ const RetweetDropdown: React.FC<RetweetDropdownProps> = ({
   onRetweet,
   onQuote,
   children,
-  disableQuote = false
+  disableQuote = false,
+  label = 'Repost'
 }) => {
   return (
     <div className="relative inline-block text-left">
       <Menu>
         {({ open }) => (
           <>
-            <Menu.Button as="div" onClick={(e: React.MouseEvent) => e.stopPropagation()}>
+            <Menu.Button aria-label={label} className="rounded-full" onClick={(e: React.MouseEvent) => e.stopPropagation()}>
               {children}
             </Menu.Button>
 

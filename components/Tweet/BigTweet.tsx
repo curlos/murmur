@@ -10,6 +10,7 @@ import ParentTweet from "../ParentTweet";
 import { TweetDropdown } from "../TweetDropdown";
 import TweetActions from "./TweetActions";
 import { getWordBreakClass } from "../../utils/textHelpers";
+import { onEnterOrSpace } from "../../utils/a11y";
 
 const BigTweet = ({
   session,
@@ -52,7 +53,7 @@ const BigTweet = ({
         <div className="text-xl w-full">
           <div className="text-[15px] text-gray-500">
             <span>Replying to</span>
-            <span className="ml-1 text-lightblue-400 cursor-pointer hover:underline">@deleted</span>
+            <span className="ml-1 text-lightblue-500 dark:text-lightblue-400">@deleted</span>
           </div>
         </div>
       )}
@@ -63,7 +64,7 @@ const BigTweet = ({
           <div className="text-[15px] text-gray-500">
             <span>Replying to</span>
             <Link href={`/profile/${parentTweetAuthor.tag}`}>
-              <span className="ml-1 text-lightblue-400 cursor-pointer hover:underline">@{parentTweetAuthor.tag}</span>
+              <a className="ml-1 text-lightblue-500 dark:text-lightblue-400 cursor-pointer underline">@{parentTweetAuthor.tag}</a>
             </Link>
           </div>
         ) : null}
@@ -152,29 +153,29 @@ const TweetTopGeneralInfo = ({ author, showParentTweetConnectingLine, pastTweet,
     <div className="flex justify-between">
       <div className="flex">
         <Link href={`/profile/${author.tag}`}>
-          <div className="mr-2 relative">
+          <a className="block mr-2 relative">
             <img
               src={author.profilePic}
               alt={`${author.tag}'s profile pic`}
               className="rounded-full h-[55px] w-[55px] object-cover max-w-none cursor-pointer"
             />
             {showParentTweetConnectingLine && (
-              <div className="absolute left-1/2 transform -translate-x-1/2 top-[55px] bottom-[-24px] w-0.5 bg-gray-400 dark:bg-gray-600"></div>
+              <span className="absolute left-1/2 transform -translate-x-1/2 top-[55px] bottom-[-24px] w-0.5 bg-gray-400 dark:bg-gray-600"></span>
             )}
-          </div>
+          </a>
         </Link>
 
         <div className="">
           <Link href={`/profile/${author.tag}`}>
-            <div className="flex">
-              <div className="cursor-pointer hover:underline font-bold truncate max-w-[200px]">{author.name}</div>
-              <HiBadgeCheck className="h-[18px] w-[18px] ml-[2px] mt-[2px] text-lightblue-500" />
-            </div>
+            <a className="flex">
+              <span className="cursor-pointer hover:underline font-bold truncate max-w-[200px]">{author.name}</span>
+              <HiBadgeCheck className="h-[18px] w-[18px] ml-[2px] mt-[2px] text-lightblue-500" title="Verified" />
+            </a>
           </Link>
           <Link href={`/profile/${author.tag}`}>
-            <div className="text-gray-700 dark:text-gray-400 p-0 m-0 cursor-pointer hover:underline">
+            <a className="block text-gray-700 dark:text-gray-400 p-0 m-0 cursor-pointer hover:underline">
               @{author.tag}
-            </div>
+            </a>
           </Link>
         </div>
       </div>
@@ -200,7 +201,7 @@ const TweetBottomGeneralInfo = ({ editedTweet, id, tweet, handleInteractionClick
     <div className="py-4">
       {/* Desktop layout: everything in one row */}
       <div className="hidden sm:flex items-center gap-1">
-        <div
+        <button type="button" disabled={!editedTweet}
           className={`flex gap-1 ${editedTweet ? "cursor-pointer" : ""}`}
           onClick={() => {
             if (editedTweet) {
@@ -209,7 +210,7 @@ const TweetBottomGeneralInfo = ({ editedTweet, id, tweet, handleInteractionClick
           }}
         >
           {/* If the tweet has been edited, the last edited time will be displayed and if the link is clicked, the user will be redirected to the tweet version history page. */}
-          {editedTweet && <BsPencilFill className="h-[18px] w-[18px] ml-[2px] text-gray-500 mr-1" />}
+          {editedTweet && <BsPencilFill className="h-[18px] w-[18px] ml-[2px] text-gray-500 mr-1" aria-hidden="true" />}
           <span className={`flex gap-1 border-b border-transparent${editedTweet ? " hover:border-gray-500" : ""}`}>
             {editedTweet && <div className="text-gray-500">Last edited</div>}
             <div className="text-gray-500">
@@ -220,21 +221,21 @@ const TweetBottomGeneralInfo = ({ editedTweet, id, tweet, handleInteractionClick
               {tweet.timestamp?.seconds ? moment(tweet.timestamp.seconds * 1000).format("ll") : "Today"}
             </div>
           </span>
-        </div>
+        </button>
 
         <div className="text-gray-500 font-bold">·</div>
-        <div
+        <button type="button"
           className="text-gray-500 hover:underline cursor-pointer flex items-center gap-1"
           onClick={handleInteractionClick}
         >
           {React.createElement(getReplyStatus().icon, { className: "h-4 w-4" })}
           {getReplyStatus().text}
-        </div>
+        </button>
       </div>
 
       {/* Mobile layout: timestamp row and interaction row separate */}
       <div className="sm:hidden">
-        <div
+        <button type="button" disabled={!editedTweet}
           className={`flex gap-1 mb-2 ${editedTweet ? "cursor-pointer" : ""}`}
           onClick={() => {
             if (editedTweet) {
@@ -243,7 +244,7 @@ const TweetBottomGeneralInfo = ({ editedTweet, id, tweet, handleInteractionClick
           }}
         >
           {/* If the tweet has been edited, the last edited time will be displayed and if the link is clicked, the user will be redirected to the tweet version history page. */}
-          {editedTweet && <BsPencilFill className="h-[18px] w-[18px] ml-[2px] text-gray-500 mr-1" />}
+          {editedTweet && <BsPencilFill className="h-[18px] w-[18px] ml-[2px] text-gray-500 mr-1" aria-hidden="true" />}
           <span className={`flex gap-1 border-b border-transparent${editedTweet ? " hover:border-gray-500" : ""}`}>
             {editedTweet && <div className="text-gray-500">Last edited</div>}
             <div className="text-gray-500">
@@ -254,15 +255,15 @@ const TweetBottomGeneralInfo = ({ editedTweet, id, tweet, handleInteractionClick
               {tweet.timestamp?.seconds ? moment(tweet.timestamp.seconds * 1000).format("ll") : "Today"}
             </div>
           </span>
-        </div>
+        </button>
 
-        <div
+        <button type="button"
           className="text-gray-500 hover:underline cursor-pointer flex items-center gap-1"
           onClick={handleInteractionClick}
         >
           {React.createElement(getReplyStatus().icon, { className: "h-4 w-4" })}
           {getReplyStatus().text}
-        </div>
+        </button>
       </div>
     </div>
   )
@@ -276,9 +277,12 @@ const TweetImages = ({ tweet, handleImageClick }) => {
           {tweet.images.length === 1 ? (
             <img
               src={tweet.images[0]}
-              alt=""
               className="rounded-2xl w-full object-contain border border-[#C8B9B1] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity"
+              role="button"
+              tabIndex={0}
+              aria-label="View image 1"
               onClick={(e) => handleImageClick(e, 0)}
+              onKeyDown={onEnterOrSpace((e) => handleImageClick(e, 0))}
             />
           ) : tweet.images.length === 2 ? (
             <div className="grid grid-cols-2 gap-2">
@@ -286,11 +290,14 @@ const TweetImages = ({ tweet, handleImageClick }) => {
                 <img
                   key={index}
                   src={image}
-                  alt=""
                   className={`w-full aspect-[1/1] object-cover border border-[#C8B9B1] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity ${
                     index === 0 ? "rounded-l-2xl" : "rounded-r-2xl"
                   }`}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`View image ${index + 1}`}
                   onClick={(e) => handleImageClick(e, index)}
+                  onKeyDown={onEnterOrSpace((e) => handleImageClick(e, index))}
                 />
               ))}
             </div>
@@ -298,22 +305,31 @@ const TweetImages = ({ tweet, handleImageClick }) => {
             <div className="grid grid-cols-2 gap-2">
               <img
                 src={tweet.images[0]}
-                alt=""
                 className="rounded-l-2xl w-full h-full aspect-[6/2] object-cover border border-[#C8B9B1] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity"
+                role="button"
+                tabIndex={0}
+                aria-label="View image 1"
                 onClick={(e) => handleImageClick(e, 0)}
+                onKeyDown={onEnterOrSpace((e) => handleImageClick(e, 0))}
               />
               <div className="flex flex-col gap-2">
                 <img
                   src={tweet.images[1]}
-                  alt=""
                   className="rounded-tr-2xl w-full aspect-[3/2] object-cover border border-[#C8B9B1] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity"
+                  role="button"
+                  tabIndex={0}
+                  aria-label="View image 2"
                   onClick={(e) => handleImageClick(e, 1)}
+                  onKeyDown={onEnterOrSpace((e) => handleImageClick(e, 1))}
                 />
                 <img
                   src={tweet.images[2]}
-                  alt=""
                   className="rounded-br-2xl w-full aspect-[3/2] object-cover border border-[#C8B9B1] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity"
+                  role="button"
+                  tabIndex={0}
+                  aria-label="View image 3"
                   onClick={(e) => handleImageClick(e, 2)}
+                  onKeyDown={onEnterOrSpace((e) => handleImageClick(e, 2))}
                 />
               </div>
             </div>
@@ -323,7 +339,6 @@ const TweetImages = ({ tweet, handleImageClick }) => {
                 <div key={index} className="relative">
                   <img
                     src={image}
-                    alt=""
                     className={`w-full aspect-[3/2] object-cover border border-[#C8B9B1] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity ${
                       index === 0
                         ? "rounded-tl-2xl"
@@ -333,16 +348,20 @@ const TweetImages = ({ tweet, handleImageClick }) => {
                             ? "rounded-bl-2xl"
                             : "rounded-br-2xl"
                     }`}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`View image ${index + 1}`}
                     onClick={(e) => handleImageClick(e, index)}
+                    onKeyDown={onEnterOrSpace((e) => handleImageClick(e, index))}
                   />
                   {index === 3 && tweet.images.length > 4 && (
-                    <div
+                    <button type="button" aria-label={`View all ${tweet.images.length} images`}
                       className={`absolute bottom-3 right-3 bg-gray-900 hover:bg-black rounded-lg px-4 py-2 cursor-pointer transition-all flex items-center gap-2 border border-gray-400 dark:border-gray-700`}
                       onClick={(e) => handleImageClick(e, 0)}
                     >
                       <PhotographIcon className="h-5 w-5 text-white" />
                       <span className="text-white text-lg font-bold">+{tweet.images.length - 4}</span>
-                    </div>
+                    </button>
                   )}
                 </div>
               ))}

@@ -92,7 +92,7 @@ const FollowersOrFollowing = () => {
             <PageHeader
               title={
                 <div className="flex items-center">
-                  <h2 className="text-xl font-[900] truncate max-w-[250px] sm:max-w-[550px] lg:max-w-[420px] xl:max-w-[480px]">{author.name}</h2>
+                  <span className="text-xl font-[900] truncate max-w-[250px] sm:max-w-[550px] lg:max-w-[420px] xl:max-w-[480px]">{author.name}</span>
                   <HiBadgeCheck className="h-6 w-6 text-lightblue-500 ml-1" />
                 </div>
               }
@@ -106,26 +106,26 @@ const FollowersOrFollowing = () => {
             <div className="flex">
               {/* FOLLOWERS TAB */}
               <Link href={`/followers/${author.tag}`}>
-                <div className="flex flex-grow flex-col items-center text-base text-gray-500 mr-2 cursor-pointer">
-                  <div className={`${router.asPath.includes('followers') && 'text-lightblue-500 dark:text-white font-bold'} flex-1 py-2 flex justify-center items-center`}>Followers</div>
+                <a aria-current={router.asPath.includes('followers') ? 'page' : undefined} className="flex flex-grow flex-col items-center text-base text-gray-500 mr-2 cursor-pointer">
+                  <span className={`${router.asPath.includes('followers') && 'text-lightblue-500 dark:text-white font-bold'} flex-1 py-2 flex justify-center items-center`}>Followers</span>
 
                   {router.asPath.includes('followers') ? (
-                    <div className="w-full h-1 m-0 bg-lightblue-400 rounded-full"
+                    <span className="w-full h-1 m-0 bg-lightblue-400 rounded-full"
                     />
                   ) : null}
-                </div>
+                </a>
               </Link>
 
               {/* FOLLOWING TAB */}
               <Link href={`/following/${author.tag}`}>
-                <div className="flex flex-grow flex-col items-center text-base text-gray-500 mr-2 cursor-pointer">
-                  <div className={`${router.asPath.includes('following') && 'text-lightblue-500 dark:text-white font-bold'} flex-1 py-2 flex justify-center items-center`}>Following</div>
+                <a aria-current={router.asPath.includes('following') ? 'page' : undefined} className="flex flex-grow flex-col items-center text-base text-gray-500 mr-2 cursor-pointer">
+                  <span className={`${router.asPath.includes('following') && 'text-lightblue-500 dark:text-white font-bold'} flex-1 py-2 flex justify-center items-center`}>Following</span>
 
                   {router.asPath.includes('following') ? (
-                    <div className="w-full h-1 m-0 bg-lightblue-400 rounded-full"
+                    <span className="w-full h-1 m-0 bg-lightblue-400 rounded-full"
                     />
                   ) : null}
-                </div>
+                </a>
               </Link>
             </div>
 

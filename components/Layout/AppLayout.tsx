@@ -53,11 +53,21 @@ const AppLayout: React.FC<AppLayoutProps> = ({
             <meta name="twitter:card" content="summary_large_image" />
           </Head>
 
-          <main className={`bg-white text-black dark:bg-black dark:text-white min-h-screen flex`}>
+          {/* Lets keyboard users jump past the sidebar straight to the page content. */}
+          <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-lightblue-500 focus:text-white focus:px-4 focus:py-2 focus:rounded-full">
+            Skip to main content
+          </a>
+          {showWidgets && (
+            <a href="#search-and-news" className="hidden lg:block sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-lightblue-500 focus:text-white focus:px-4 focus:py-2 focus:rounded-full">
+              Skip to search and news
+            </a>
+          )}
+
+          <div className={`bg-white text-black dark:bg-black dark:text-white min-h-screen flex`}>
             <Sidebar />
-            <div className="flex-1">
+            <main id="main-content" className="flex-1">
               {children}
-            </div>
+            </main>
             {showWidgets && <Widgets />}
 
             {isOpen && <NewTweetModal setIsEditing={setIsEditing} />}
@@ -68,7 +78,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({
 
             <TweetSentAlert />
             <MobileBottomNavBar />
-          </main>
+          </div>
         </div>
       </div>
     </div>

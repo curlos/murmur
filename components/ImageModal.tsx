@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { XIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
+import { Dialog } from '@headlessui/react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -31,6 +32,8 @@ const CustomLeftArrow = ({ onClick, ...rest }: any) => {
   const { onMove } = rest;
   return (
     <button
+      type="button"
+      aria-label="Previous image"
       className={getArrowButtonClasses('left')}
       onClick={() => onClick()}
       disabled={onMove}
@@ -47,6 +50,8 @@ const CustomRightArrow = ({ onClick, ...rest }: any) => {
   const { onMove } = rest;
   return (
     <button
+      type="button"
+      aria-label="Next image"
       className={getArrowButtonClasses('right')}
       onClick={() => onClick()}
       disabled={onMove}
@@ -96,11 +101,13 @@ const ImageModal = ({ isOpen, images, initialIndex = 0, onClose }: ImageModalPro
   // For single image, show simple modal
   if (images.length === 1) {
     return (
-      <div
+      <Dialog open onClose={onClose} aria-label="Image viewer"
         className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80"
         onClick={onClose}
       >
         <button
+          type="button"
+          aria-label="Close"
           className="absolute top-4 right-4 z-10 p-2 bg-black bg-opacity-50 rounded-full text-white hover:bg-white hover:bg-opacity-20 hover:text-white transition-colors"
           onClick={(e) => {
             e.stopPropagation();
@@ -117,7 +124,7 @@ const ImageModal = ({ isOpen, images, initialIndex = 0, onClose }: ImageModalPro
             onClick={(e) => e.stopPropagation()}
           />
         </div>
-      </div>
+      </Dialog>
     );
   }
 
@@ -130,11 +137,13 @@ const ImageModal = ({ isOpen, images, initialIndex = 0, onClose }: ImageModalPro
   };
 
   return (
-    <div
+    <Dialog open onClose={onClose} aria-label="Image viewer"
       className="fixed inset-0 z-50 bg-black bg-opacity-70"
       onClick={onClose}
     >
       <button
+        type="button"
+        aria-label="Close"
         className="absolute top-4 right-4 z-20 p-2 bg-black bg-opacity-50 rounded-full text-white hover:bg-white hover:bg-opacity-20 hover:text-white transition-colors"
         onClick={(e) => {
           e.stopPropagation();
@@ -183,6 +192,9 @@ const ImageModal = ({ isOpen, images, initialIndex = 0, onClose }: ImageModalPro
             {images.map((image, index) => (
               <button
                 key={index}
+                type="button"
+                aria-label={`Show image ${index + 1}`}
+                aria-current={currentSlide === index ? 'true' : undefined}
                 className={`flex-shrink-0 p-1 ${currentSlide === index ? 'border-2 border-lightblue-500' : 'border-2 border-transparent'}`}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -199,7 +211,7 @@ const ImageModal = ({ isOpen, images, initialIndex = 0, onClose }: ImageModalPro
           </div>
         </div>
       </div>
-    </div>
+    </Dialog>
   );
 };
 

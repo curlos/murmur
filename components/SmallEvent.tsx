@@ -21,7 +21,8 @@ const SmallEvent = ({ news }: Props) => {
   return (
     <div className="grid grid-cols-smallEvent cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-700 px-4 py-4 gap-2" onClick={() => window.open(link, '_blank')}>
       <div>
-        <div className="font-bold mb-1">{title}</div>
+        {/* The title is a real link so keyboard users can open the article too. */}
+        <a href={link} target="_blank" rel="noopener noreferrer" className="block font-bold mb-1" onClick={(e) => e.stopPropagation()}>{title}</a>
         <div className="flex items-center gap-1 text-sm text-gray-700 dark:text-gray-400">
           {source_icon && (
             <img

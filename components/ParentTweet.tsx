@@ -105,12 +105,19 @@ const ParentTweet = ({ tweetBeingRepliedToId, isQuoteTweet, fromTweetModal = fal
             <div className="text-gray-700 dark:text-gray-400 lg:flex items-center">
               <div className="flex items-center mr-[2px]">
                 <div className="text-black dark:text-white font-bold truncate max-w-[150px] sm:max-w-[200px]">{author.name}</div>
-                <HiBadgeCheck className="h-[18px] w-[18px] ml-[2px] text-lightblue-500" />
+                <HiBadgeCheck className="h-[18px] w-[18px] ml-[2px] text-lightblue-500" title="Verified" />
               </div>
               <div>@{author.tag}</div>
               <div className="text-gray-500 mx-1 font-bold hidden lg:block">·</div>
+              {/* When the quoted post is clickable, its timestamp is a real link so keyboard users can open it too. */}
               {tweet.timestamp && tweet.timestamp.seconds && (
-                <div className="text-gray-500">{moment(tweet.timestamp.seconds * 1000).fromNow()}</div>
+                isQuoteTweet && !fromTweetModal ? (
+                  <Link href={`/post/${tweetBeingRepliedToId}`}>
+                    <a className="block text-gray-500 hover:underline" onClick={(e) => e.stopPropagation()}>{moment(tweet.timestamp.seconds * 1000).fromNow()}</a>
+                  </Link>
+                ) : (
+                  <div className="text-gray-500">{moment(tweet.timestamp.seconds * 1000).fromNow()}</div>
+                )
               )}
             </div>
 
@@ -188,9 +195,9 @@ const ParentTweet = ({ tweetBeingRepliedToId, isQuoteTweet, fromTweetModal = fal
 
             {!isQuoteTweet && (
               <div className="my-3 text-gray-700 dark:text-gray-400">
-                Replying to <span className="text-lightblue-400">
+                Replying to <span className="text-lightblue-500 dark:text-lightblue-400">
                   <Link href={`/profile/${author.tag}`}>
-                    <span>@{author.tag}</span>
+                    <a className="underline">@{author.tag}</a>
                   </Link>
                 </span>
               </div>

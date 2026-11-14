@@ -51,7 +51,7 @@ export const NewTweetModal = ({ setIsEditing }: Props) => {
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>
-      <Dialog as="div" className="fixed z-50 inset-0 overflow-y-auto" onClose={handleClose}>
+      <Dialog as="div" aria-label="Write a post" className="fixed z-50 inset-0 overflow-y-auto" onClose={handleClose}>
         <div className={`${theme} flex items-center justify-center min-h-screen p-2 lg:pt-4 lg:px-4 lg:pb-20 text-center sm:block sm:p-0`}>
           <Transition.Child
             as={Fragment}
@@ -82,7 +82,9 @@ export const NewTweetModal = ({ setIsEditing }: Props) => {
               <div className="bg-white dark:bg-black rounded-2xl">
                 <div className="p-3 pb-0">
                   <div>
-                    <XIcon className="h-7 w-7 cursor-pointer text-gray-400 dark:text-white hover:text-gray-500" onClick={handleClose} />
+                    <button type="button" aria-label="Close" onClick={handleClose}>
+                      <XIcon className="h-7 w-7 cursor-pointer text-gray-700 dark:text-white hover:text-gray-500" />
+                    </button>
                   </div>
                 </div>
 

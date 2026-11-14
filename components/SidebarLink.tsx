@@ -43,14 +43,15 @@ const SidebarLink = ({ text, Icon, IconSolid, active, tag }: Props) => {
   return (
     <Link href={getLinkHref(text)}>
       {/* Show the text as bold when the link is ACTIVE (meaning we are on that page. So, if we were on the user's bookmarks, then the "Bookmark" link would be bold.) */}
-      <div className={`flex items-center space-x-2 text-xl cursor-pointer ${active && 'font-bold text-lightblue-500 dark:text-lightblue-500'}`}>
+      <a aria-current={active ? 'page' : undefined} className={`flex items-center space-x-2 text-xl cursor-pointer ${active && 'font-bold text-lightblue-500 dark:text-lightblue-500'}`}>
         {active && IconSolid ? (
           <IconSolid className="h-[30px] w-[30px]" />
         ) : (
           <Icon className="h-[30px] w-[30px]" />
         )}
-        <div className="hidden xl:block">{text}</div>
-      </div>
+        {/* "sr-only" keeps the link's name for screen readers when the text is hidden on smaller screens. */}
+        <span className="sr-only xl:not-sr-only">{text}</span>
+      </a>
     </Link>
   );
 };

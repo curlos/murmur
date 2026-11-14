@@ -19,6 +19,7 @@ import EditProfileModal from '../../components/EditProfileModal';
 import ImageModal from '../../components/ImageModal';
 import { HiBadgeCheck } from 'react-icons/hi';
 import { getWordBreakClass } from '../../utils/textHelpers';
+import { onEnterOrSpace } from '../../utils/a11y';
 
 // Utility function to split array into chunks of specified size
 const chunkArray = (array, chunkSize) => {
@@ -48,31 +49,37 @@ const ProfileHeader = ({ author, session, id, followed, handleEditOrFollow, foll
       <div>
         <img
           src={author.banner || "/assets/profile_banner.jpg"}
-          alt=""
           className="w-full max-h-[225px] object-cover cursor-pointer"
+          role="button"
+          tabIndex={0}
+          aria-label="View banner"
           onClick={() => handleImageClick(author.banner || "/assets/profile_banner.jpg")}
+          onKeyDown={onEnterOrSpace(() => handleImageClick(author.banner || "/assets/profile_banner.jpg"))}
         />
       </div>
 
       <div className="flex justify-between items-start p-4 pb-0">
         <img
           src={author.profilePic}
-          alt=""
           className="rounded-full h-[133.5px] w-[133.5px] border-4 border-white dark:border-black mt-[-88px] object-cover cursor-pointer bg-gray-200 dark:bg-gray-800"
+          role="button"
+          tabIndex={0}
+          aria-label="View profile picture"
           onClick={() => handleImageClick(author.profilePic)}
+          onKeyDown={onEnterOrSpace(() => handleImageClick(author.profilePic))}
         />
 
         <div className="flex items-center space-x-2">
-          <div className="flex justify-center items-center p-2 px-4 border-2 border-[#C8B9B1] dark:border-gray-700 rounded-full cursor-pointer" onClick={handleEditOrFollow}>
+          <button type="button" className="flex justify-center items-center p-2 px-4 border-2 border-[#C8B9B1] dark:border-gray-700 rounded-full cursor-pointer" onClick={handleEditOrFollow}>
             {session && session.user && session.user.tag === String(id) ? 'Edit Profile' : (followed ? 'Following' : 'Follow')}
-          </div>
+          </button>
         </div>
       </div>
 
       <div className="p-4 pt-2">
         <div className="flex items-center">
           <h2 className="text-xl font-[900] truncate max-w-[250px] sm:max-w-[420px] xl:max-w-[480px]">{author.name}</h2>
-          <HiBadgeCheck className="h-[22px] w-[22px] ml-[2px] mb-[3px] text-lightblue-500" />
+          <HiBadgeCheck className="h-[22px] w-[22px] ml-[2px] mb-[3px] text-lightblue-500" title="Verified" />
         </div>
 
         <div className="text-base text-gray-500">@{author.tag}</div>
@@ -91,7 +98,7 @@ const ProfileHeader = ({ author, session, id, followed, handleEditOrFollow, foll
             <div className="hidden sm:flex space-x-1">
               <LinkIcon className="h-5 w-5 flex-shrink-0" />
               <a href={`${!author.website.includes('https://') ?
-                `https://${author.website}` : author.website}`} target="_blank" className="text-lightblue-400 hover:underline truncate max-w-[200px]">{author.website}</a>
+                `https://${author.website}` : author.website}`} target="_blank" rel="noopener noreferrer" className="text-lightblue-500 dark:text-lightblue-400 hover:underline truncate max-w-[200px]">{author.website}</a>
             </div>
           ) : null}
 
@@ -106,7 +113,7 @@ const ProfileHeader = ({ author, session, id, followed, handleEditOrFollow, foll
             <div className="flex space-x-1">
               <LinkIcon className="h-5 w-5 flex-shrink-0" />
               <a href={`${!author.website.includes('https://') ?
-                `https://${author.website}` : author.website}`} target="_blank" className="text-lightblue-400 hover:underline truncate max-w-[250px]">{author.website}</a>
+                `https://${author.website}` : author.website}`} target="_blank" rel="noopener noreferrer" className="text-lightblue-500 dark:text-lightblue-400 hover:underline truncate max-w-[250px]">{author.website}</a>
             </div>
           ) : null}
         </div>
@@ -116,10 +123,10 @@ const ProfileHeader = ({ author, session, id, followed, handleEditOrFollow, foll
             pathname: `/following/[tag]`,
             query: { tag: author.tag || 't' }
           }}>
-            <div className="space-x-1 cursor-pointer hover:underline">
+            <a className="space-x-1 cursor-pointer hover:underline">
               <span className="text-black dark:text-white font-bold">{author.followingCount ?? 0}</span>
               <span>Following</span>
-            </div>
+            </a>
           </Link>
 
 
@@ -127,10 +134,10 @@ const ProfileHeader = ({ author, session, id, followed, handleEditOrFollow, foll
             pathname: `/followers/[tag]`,
             query: { tag: author.tag || 't' }
           }}>
-            <div className="space-x-1 cursor-pointer hover:underline">
+            <a className="space-x-1 cursor-pointer hover:underline">
               <span className="text-black dark:text-white font-bold">{author.followersCount ?? 0}</span>
               <span>{(author.followersCount ?? 0) === 1 ? 'Follower' : 'Followers'}</span>
-            </div>
+            </a>
           </Link>
         </div>
 
@@ -139,7 +146,8 @@ const ProfileHeader = ({ author, session, id, followed, handleEditOrFollow, foll
             <div className="flex">
               {followersYouFollow.slice(0, 3).map((user, i) => (
                 <Link key={user.tag} href={`/profile/${user.tag}`}>
-                  <img src={user.profilePic} alt="" className={`h-[18px] w-[18px] cursor-pointer border border-white rounded-full ${i > 0 ? 'ml-[-9px]' : ''}`} />
+                  {/* Skipped by keyboard and screen readers since the same profiles are linked by name right next to these. */}
+                  <a tabIndex={-1} aria-hidden="true"><img src={user.profilePic} alt="" className={`h-[18px] w-[18px] cursor-pointer border border-white rounded-full ${i > 0 ? 'ml-[-9px]' : ''}`} /></a>
                 </Link>
               ))}
             </div>
@@ -147,8 +155,8 @@ const ProfileHeader = ({ author, session, id, followed, handleEditOrFollow, foll
               Followed by {followersYouFollow.slice(0, 3).map((follower, i) => (
                 <span key={`follower-${follower.tag}`}>
                   <Link href={`/profile/${follower.tag}`}>
-                    <span className="cursor-pointer hover:underline truncate max-w-[200px] inline-block align-bottom">{follower.name}
-                    </span>
+                    <a className="cursor-pointer underline truncate max-w-[200px] inline-block align-bottom">{follower.name}
+                    </a>
                   </Link>
                   <span>
                     {i === followersYouFollow.slice(0, 3).length - 1 ? '' : ', '}
@@ -598,18 +606,20 @@ const FilterTabs = ({ filter, setFilter }) => {
   return (
     <div className="flex">
       {tabs.map((tab) => (
-        <div
+        <button
+          type="button"
           key={tab}
+          aria-pressed={filter === tab}
           className="flex flex-grow flex-col items-center text-base text-gray-500 mr-2 ml-2 cursor-pointer"
           onClick={() => setFilter(tab)}
         >
-          <div className={`${filter === tab && 'text-black dark:text-white font-bold'} flex-1 py-2 flex justify-center items-center`}>
+          <span className={`${filter === tab && 'text-black dark:text-white font-bold'} flex-1 py-2 flex justify-center items-center`}>
             {tab.replace('Tweets', 'Posts')}
-          </div>
+          </span>
           {filter === tab ? (
-            <div className="w-full h-1 m-0 bg-lightblue-400 rounded-full" />
+            <span className="w-full h-1 m-0 bg-lightblue-400 rounded-full" />
           ) : null}
-        </div>
+        </button>
       ))}
     </div>
   );

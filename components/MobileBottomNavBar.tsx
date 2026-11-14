@@ -14,35 +14,39 @@ const MobileBottomNavBar: React.FC = () => {
   const [_sidenavOpen, setSidenavOpen] = useRecoilState(sidenavState);
 
   return (
-    <div className="sm:hidden fixed bottom-0 w-full border-t-[1px] bg-white border-[#C8B9B1] dark:bg-black  dark:border-gray-700 p-4 px-6 flex items-center h-[60px]">
+    <nav aria-label="Mobile" className="sm:hidden fixed bottom-0 w-full border-t-[1px] bg-white border-[#C8B9B1] dark:bg-black  dark:border-gray-700 p-4 px-6 flex items-center h-[60px]">
       {/* Will redirect back home to the user's feed. */}
       <div className="flex-1 flex justify-center">
         <Link href={`/`}>
-          <span>
+          <a aria-label="Home">
             <FaHome className="h-6 w-6 cursor-pointer" />
-          </span>
+          </a>
         </Link>
       </div>
 
       {/* Clicking this will open the "Search" modal where users can type in whatever they want and filter the tweets shown by their query. */}
       <div className="flex-1 flex justify-center">
-        <FaSearch className="h-6 w-6 cursor-pointer" onClick={() => setSearchModalOpen(true)} />
+        <button type="button" aria-label="Search" onClick={() => setSearchModalOpen(true)}>
+          <FaSearch className="h-6 w-6 cursor-pointer" />
+        </button>
       </div>
 
       {/* Will redirect to the news page. */}
       <div className="flex-1 flex justify-center">
         <Link href={`/news`}>
-          <span>
+          <a aria-label="News">
             <NewspaperIcon className="h-6 w-6 cursor-pointer" />
-          </span>
+          </a>
         </Link>
       </div>
 
       {/* This is the settings icon. When it's clicked, it will open the "Sidenav" so the user can see all the full detailed stuff that couldn't fit on this MobileBottomNavBar. */}
       <div className="flex-1 flex justify-center">
-        <CogIcon className="h-7 w-7 cursor-pointer" onClick={() => setSidenavOpen(true)} />
+        <button type="button" aria-label="Open menu" onClick={() => setSidenavOpen(true)}>
+          <CogIcon className="h-7 w-7 cursor-pointer" />
+        </button>
       </div>
-    </div>
+    </nav>
   );
 };
 

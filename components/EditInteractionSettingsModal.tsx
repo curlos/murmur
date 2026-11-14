@@ -162,8 +162,10 @@ export const EditInteractionSettingsModal = () => {
               {/* Header */}
               <div className="bg-white dark:bg-black pb-4 border-b border-gray-700">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-xl font-bold text-black dark:text-white">Edit interaction settings</h2>
-                  <XIcon className="h-7 w-7 cursor-pointer text-gray-700 dark:text-gray-400 dark:text-white hover:text-gray-500" onClick={handleXClick} />
+                  <Dialog.Title as="h2" className="text-xl font-bold text-black dark:text-white">Edit interaction settings</Dialog.Title>
+                  <button type="button" aria-label="Close" onClick={handleXClick}>
+                    <XIcon className="h-7 w-7 cursor-pointer text-gray-700 dark:text-gray-400 dark:text-white hover:text-gray-500" />
+                  </button>
                 </div>
                 <p className="text-gray-500 text-gray-700 dark:text-gray-400 mt-2">Customize who can interact with this post.</p>
               </div>

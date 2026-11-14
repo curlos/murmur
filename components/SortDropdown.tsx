@@ -27,7 +27,7 @@ export const SortDropdown = ({ sortType, setSortType, options }: Props) => {
                 <Menu.Button className="inline-flex justify-center w-full px-4 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-white dark:bg-black rounded-md">
                   <span className="flex gap-2 p-2">
                     <span className="text-black dark:text-white">{sortType}</span>
-                    <DotsHorizontalIcon className="h-5 w-5 text-gray-700 dark:text-gray-400 cursor-pointer" />
+                    <DotsHorizontalIcon className="h-5 w-5 text-gray-700 dark:text-gray-400 cursor-pointer" aria-hidden="true" />
                   </span>
                 </Menu.Button>
               </span>
@@ -67,9 +67,9 @@ export const SortDropdown = ({ sortType, setSortType, options }: Props) => {
                         onClick={() => setSortType(option)}
                       >
                         <Menu.Item>
-                          {() => (
+                          {({ active }) => (
                             <div
-                              className={`w-full ${roundedClasses} px-4 py-3 text-sm leading-5 text-left hover:bg-gray-100 dark:hover:bg-gray-900 cursor-pointer`}
+                              className={`w-full ${roundedClasses} ${active ? 'bg-gray-100 dark:bg-gray-900' : ''} px-4 py-3 text-sm leading-5 text-left hover:bg-gray-100 dark:hover:bg-gray-900 cursor-pointer`}
                             >
                               {option}
                             </div>

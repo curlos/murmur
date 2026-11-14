@@ -77,11 +77,13 @@ const News: React.FC = () => {
 
   return (
     <AppLayout title="News - Murmur">
-      <main className="flex-1 min-h-screen border-l border-r border-gray-200 dark:border-gray-800">
+      <div className="flex-1 min-h-screen border-l border-r border-gray-200 dark:border-gray-800">
         {/* Header */}
         <div className="sticky top-0 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800 z-10">
           <div className="flex items-center px-4 py-3">
             <button
+              type="button"
+              aria-label="Go back"
               onClick={() => router.back()}
               className="mr-4 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
@@ -137,7 +139,10 @@ const News: React.FC = () => {
                         </div>
                       </div>
                       <h2 className="text-lg font-bold mb-2 line-clamp-2">
-                        {article.title}
+                        {/* The title is a real link so keyboard users can open the article too. */}
+                        <a href={article.link} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                          {article.title}
+                        </a>
                       </h2>
 
                       {/* Mobile image placement - after headline */}
@@ -194,7 +199,7 @@ const News: React.FC = () => {
             </div>
           )}
         </div>
-      </main>
+      </div>
     </AppLayout>
   );
 };

@@ -20,10 +20,10 @@ const DropdownMenuItem: React.FC<DropdownMenuItemProps> = ({
   const hoverClass = disabled ? "" : "hover:bg-gray-100 dark:hover:bg-gray-800";
 
   return (
-    <Menu.Item>
-      {() => (
+    <Menu.Item disabled={disabled}>
+      {({ active }) => (
         <div
-          className={`bg-white dark:bg-black w-full px-4 py-2 text-sm leading-5 text-left ${cursorClass} ${hoverClass} transition-colors duration-200 flex items-center space-x-3 ${className}`}
+          className={`${active && !disabled ? 'bg-gray-100 dark:bg-gray-800' : 'bg-white dark:bg-black'} w-full px-4 py-2 text-sm leading-5 text-left ${cursorClass} ${hoverClass} transition-colors duration-200 flex items-center space-x-3 ${className}`}
           onClick={onClick}
         >
           <Icon className="h-5 w-5" />

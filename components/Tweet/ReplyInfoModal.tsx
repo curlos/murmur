@@ -95,13 +95,12 @@ const ReplyInfoModal: React.FC<ReplyInfoModalProps> = ({
             <div className="inline-block bg-white dark:bg-black rounded-2xl text-left overflow-hidden shadow-xl transform transition-all my-8 align-middle max-w-md w-full p-6">
               {/* Header */}
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-medium text-black dark:text-white">
+                <Dialog.Title as="h3" className="text-lg font-medium text-black dark:text-white">
                   {replyInfo.title}
-                </h3>
-                <XIcon
-                  className="h-6 w-6 cursor-pointer text-gray-700 dark:text-gray-400 hover:text-gray-500"
-                  onClick={onClose}
-                />
+                </Dialog.Title>
+                <button type="button" aria-label="Close" onClick={onClose}>
+                  <XIcon className="h-6 w-6 cursor-pointer text-gray-700 dark:text-gray-400 hover:text-gray-500" />
+                </button>
               </div>
 
               {/* Content */}

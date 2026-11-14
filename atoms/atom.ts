@@ -67,8 +67,17 @@ export const editInteractionSettingsModalState = createSafeAtom<boolean>({
   default: false,
 });
 
+export interface IEditInteractionSettingsTweet {
+  tweetId: string; // Empty when the settings are for a new post that hasn't been created yet
+  allowQuotes: boolean;
+  allowRepliesFrom: string[];
+  isNewTweet?: boolean;
+  // Only set for new posts: passes the chosen settings back to the composer instead of saving them to the database
+  handleSettingsChange?: (allowQuotes: boolean, allowRepliesFrom: string[]) => void;
+}
+
 // Used to store the tweet data for editing interaction settings.
-export const editInteractionSettingsTweetState = createSafeAtom<object>({
+export const editInteractionSettingsTweetState = createSafeAtom<IEditInteractionSettingsTweet>({
   key: "editInteractionSettingsTweetState",
   default: {
     tweetId: '',
@@ -83,8 +92,14 @@ export const isQuoteTweetState = createSafeAtom<boolean>({
   default: false,
 });
 
+export interface ITweetSentAlert {
+  isVisible: boolean;
+  tweetId: string; // When set, the alert shows a "View" button that links to this post
+  message: string;
+}
+
 // Used to control the tweet sent alert that shows after creating/editing/retweeting a tweet
-export const tweetSentAlertState = createSafeAtom<object>({
+export const tweetSentAlertState = createSafeAtom<ITweetSentAlert>({
   key: "tweetSentAlertState",
   default: {
     isVisible: false,

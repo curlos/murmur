@@ -47,11 +47,11 @@ import {
 import SortableImageItem from './SortableImageItem';
 
 interface Props {
-  tweetToEdit: ITweet;
-  isNewReply: boolean;
-  isNewQuote: boolean;
-  tweetBeingRepliedToId: string;
-  setTweetToEdit: any;
+  tweetToEdit?: ITweet;
+  isNewReply?: boolean;
+  isNewQuote?: boolean;
+  tweetBeingRepliedToId?: string;
+  setTweetToEdit?: any;
   setIsEditing?: (editing: boolean) => void;
   fromModal?: boolean;
 }
@@ -541,15 +541,16 @@ const Input = ({ tweetToEdit, setTweetToEdit, tweetBeingRepliedToId, isNewReply,
       {/* Desktop layout - original structure */}
       <div className="hidden sm:flex p-3 sm:space-x-2">
         <Link href={`/profile/${session.user.tag}`}>
-          <img src={session.user.profilePic} className="rounded-full h-[55px] w-[55px] object-cover cursor-pointer z-10" />
+          <a><img src={session.user.profilePic} alt="Your profile" className="rounded-full h-[55px] w-[55px] object-cover cursor-pointer z-10" /></a>
         </Link>
 
         <div className="w-full">
-          <div className="border-b border-[#C8B9B1] dark:border-gray-700">
+          <div className="border-b border-[#C8B9B1] dark:border-gray-700 focus-within:border-lightblue-500 dark:focus-within:border-lightblue-500">
             <TextareaAutosize
               value={input}
               onChange={handleTextChange}
-              className={`bg-white dark:bg-black text-black dark:text-white outline-none placeholder-gray-400 min-h-[60px] w-full resize-none font-sans text-lg`} placeholder="Share something..." />
+              aria-label="Post text"
+              className={`bg-white dark:bg-black text-black dark:text-white outline-none placeholder-gray-500 min-h-[60px] w-full resize-none font-sans text-lg`} placeholder="Share something..." />
 
             {selectedFiles.length > 0 && (
               <div className="py-3">
@@ -580,7 +581,7 @@ const Input = ({ tweetToEdit, setTweetToEdit, tweetBeingRepliedToId, isNewReply,
           </div>
 
           {uploadError && (
-            <div className="bg-red-50 dark:bg-red-900/20 border border-red-500 text-red-600 dark:text-red-400 px-3 py-2 rounded mt-2 flex items-start gap-2">
+            <div role="alert" className="bg-red-50 dark:bg-red-900/20 border border-red-500 text-red-600 dark:text-red-400 px-3 py-2 rounded mt-2 flex items-start gap-2">
               <ExclamationCircleIcon className="h-5 w-5 flex-shrink-0 mt-0.5" />
               <span className="text-sm">{uploadError}</span>
             </div>
@@ -590,18 +591,18 @@ const Input = ({ tweetToEdit, setTweetToEdit, tweetBeingRepliedToId, isNewReply,
             <div>
               {/* Interaction settings display - only show for new tweets, not edits */}
               <div className="flex items-center gap-1 py-2 border-t border-[#C8B9B1] dark:border-gray-700">
-                <div
+                <button type="button"
                   className="text-gray-500 hover:underline cursor-pointer flex items-center gap-1 text-sm"
                   onClick={handleInteractionClick}
                 >
                   {React.createElement(getReplyStatus().icon, { className: "h-4 w-4" })}
                   {getReplyStatus().text}
-                </div>
+                </button>
               </div>
 
               <div className="flex justify-between items-center">
-                <div className="flex space-x-3 text-lightblue-400 py-4">
-                  <div className="icon cursor-pointer" onClick={() => filePickerRef.current.click()}>
+                <div className="flex space-x-3 text-lightblue-500 dark:text-lightblue-400 py-4">
+                  <button type="button" aria-label="Add photos" className="icon cursor-pointer" onClick={() => filePickerRef.current.click()}>
                     <PhotographIcon className="h-7 w-7 hoverAnimation" />
 
                     <input
@@ -612,14 +613,14 @@ const Input = ({ tweetToEdit, setTweetToEdit, tweetBeingRepliedToId, isNewReply,
                       accept="image/jpeg,image/jpg,image/png,image/webp,image/heic,image/heif"
                       onChange={addImageToPost}
                     />
-                  </div>
+                  </button>
 
                   <EmojiDropdown onEmojiSelect={addEmoji} />
                 </div>
 
                 <div className="flex items-center space-x-4">
                   <div className="flex items-center gap-2">
-                    <div className={`${input.length >= MAX_TWEET_LENGTH ? 'text-red-500' : 'text-black dark:text-white'}`}>{input.length}/{MAX_TWEET_LENGTH}</div>
+                    <div className={`${input.length >= MAX_TWEET_LENGTH ? 'text-red-600 dark:text-red-500' : 'text-black dark:text-white'}`}>{input.length}/{MAX_TWEET_LENGTH}</div>
                     <CircularProgress current={input.length} max={MAX_TWEET_LENGTH} />
                   </div>
                   <button
@@ -639,15 +640,16 @@ const Input = ({ tweetToEdit, setTweetToEdit, tweetBeingRepliedToId, isNewReply,
         {/* Profile and textarea row */}
         <div className="flex space-x-2 mb-3">
           <Link href={`/profile/${session.user.tag}`}>
-            <img src={session.user.profilePic} className="rounded-full h-[55px] w-[55px] object-cover cursor-pointer z-10" />
+            <a><img src={session.user.profilePic} alt="Your profile" className="rounded-full h-[55px] w-[55px] object-cover cursor-pointer z-10" /></a>
           </Link>
 
           <div className="w-full">
-            <div className="border-b border-[#C8B9B1] dark:border-gray-700">
+            <div className="border-b border-[#C8B9B1] dark:border-gray-700 focus-within:border-lightblue-500 dark:focus-within:border-lightblue-500">
               <TextareaAutosize
                 value={input}
                 onChange={handleTextChange}
-                className={`bg-white dark:bg-black text-black dark:text-white outline-none placeholder-gray-400 min-h-[60px] w-full resize-none font-sans text-lg`} placeholder="Share something..." />
+                aria-label="Post text"
+                className={`bg-white dark:bg-black text-black dark:text-white outline-none placeholder-gray-500 min-h-[60px] w-full resize-none font-sans text-lg`} placeholder="Share something..." />
 
               {selectedFiles.length > 0 && (
                 <div className="py-3">
@@ -680,7 +682,7 @@ const Input = ({ tweetToEdit, setTweetToEdit, tweetBeingRepliedToId, isNewReply,
         </div>
 
         {uploadError && (
-          <div className="bg-red-50 dark:bg-red-900/20 border border-red-500 text-red-600 dark:text-red-400 px-3 py-2 rounded mb-2 flex items-start gap-2">
+          <div role="alert" className="bg-red-50 dark:bg-red-900/20 border border-red-500 text-red-600 dark:text-red-400 px-3 py-2 rounded mb-2 flex items-start gap-2">
             <ExclamationCircleIcon className="h-5 w-5 flex-shrink-0 mt-0.5" />
             <span className="text-sm">{uploadError}</span>
           </div>
@@ -691,18 +693,18 @@ const Input = ({ tweetToEdit, setTweetToEdit, tweetBeingRepliedToId, isNewReply,
           <div>
             {/* Interaction settings display - only show for new tweets, not edits */}
             <div className="flex items-center gap-1 py-2">
-              <div
+              <button type="button"
                 className="text-gray-500 hover:underline cursor-pointer flex items-center gap-1 text-sm"
                 onClick={handleInteractionClick}
               >
                 {React.createElement(getReplyStatus().icon, { className: "h-4 w-4" })}
                 {getReplyStatus().text}
-              </div>
+              </button>
             </div>
 
             <div className="flex justify-between items-center">
-              <div className="flex space-x-3 text-lightblue-400 py-4">
-                <div className="icon cursor-pointer" onClick={() => filePickerRef.current.click()}>
+              <div className="flex space-x-3 text-lightblue-500 dark:text-lightblue-400 py-4">
+                <button type="button" aria-label="Add photos" className="icon cursor-pointer" onClick={() => filePickerRef.current.click()}>
                   <PhotographIcon className="h-7 w-7 hoverAnimation" />
 
                   <input
@@ -713,14 +715,14 @@ const Input = ({ tweetToEdit, setTweetToEdit, tweetBeingRepliedToId, isNewReply,
                     accept="image/jpeg,image/jpg,image/png,image/webp,image/heic,image/heif"
                     onChange={addImageToPost}
                   />
-                </div>
+                </button>
 
                 <EmojiDropdown onEmojiSelect={addEmoji} />
               </div>
 
               <div className="flex items-center space-x-4">
                 <div className="flex items-center gap-2">
-                  <div className={`${input.length >= MAX_TWEET_LENGTH ? 'text-red-500' : 'text-black dark:text-white'}`}>{input.length}/{MAX_TWEET_LENGTH}</div>
+                  <div className={`${input.length >= MAX_TWEET_LENGTH ? 'text-red-600 dark:text-red-500' : 'text-black dark:text-white'}`}>{input.length}/{MAX_TWEET_LENGTH}</div>
                   <CircularProgress current={input.length} max={MAX_TWEET_LENGTH} />
                   {input.length >= MAX_TWEET_LENGTH && (
                     <ExclamationCircleIcon className={`h-5 w-5 text-red-500`} />

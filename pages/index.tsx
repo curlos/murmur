@@ -15,7 +15,7 @@ export default function Home() {
     <AppLayout title="Murmur">
       <Feed />
 
-      <div className="sm:hidden text-black dark:text-white  bg-lightblue-500 flex justify-center items-center rounded-full p-4 fixed bottom-0 right-0 mr-4 mb-16 cursor-pointer" onClick={() => {
+      <button type="button" aria-label="Post" className="sm:hidden text-black dark:text-white  bg-lightblue-500 flex justify-center items-center rounded-full p-4 fixed bottom-0 right-0 mr-4 mb-16 cursor-pointer" onClick={() => {
         if (!session) {
           setAuthModalOpen(true);
           return;
@@ -23,7 +23,7 @@ export default function Home() {
         setIsNewTweetModalOpen(true);
       }}>
         <FaPen className="h-7 w-7 text-white" />
-      </div>
+      </button>
     </AppLayout>
   );
 }

@@ -31,10 +31,11 @@ const SortableImageItem: React.FC<SortableImageItemProps> = ({ id, image, index,
       ref={setNodeRef}
       style={style}
       className={`relative ${isDragging ? 'z-50' : ''}`}
-      {...attributes}
     >
       <div className="relative">
-        <div
+        <button
+          type="button"
+          aria-label={`Remove image ${index + 1}`}
           className="absolute w-8 h-7 bg-[#1F1814] hover:bg-[#2E2420] bg-opacity-75 rounded-full flex items-center justify-center top-1 right-1 cursor-pointer z-10"
           onClick={(e) => {
             e.stopPropagation();
@@ -42,13 +43,16 @@ const SortableImageItem: React.FC<SortableImageItemProps> = ({ id, image, index,
           }}
         >
           <XIcon className="text-white h-5" />
-        </div>
+        </button>
         <img
           src={image}
           alt=""
           className="rounded-2xl max-h-40 w-full object-cover border border-gray-400 dark:border-gray-700 cursor-grab active:cursor-grabbing"
           draggable={false}
+          // The focus attributes and key listeners must be on the same element for keyboard reordering (Space, arrow keys, Space) to work.
+          {...attributes}
           {...listeners}
+          aria-label={`Image ${index + 1}. Press Space to pick up and reorder with the arrow keys.`}
         />
       </div>
     </div>

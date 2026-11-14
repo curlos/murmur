@@ -338,7 +338,7 @@ const TweetActions = ({
     return (
       <div className="flex justify-between w-full text-gray-700 dark:text-gray-400 py-2 px-4 sm:px-12">
         {/* Reply button */}
-        <div className={`p-2 rounded-full transition-colors duration-200 group ${
+        <button type="button" aria-label="Reply" aria-disabled={pastTweet || hideReplies || !canReply} className={`p-2 rounded-full transition-colors duration-200 group ${
           pastTweet || hideReplies || !canReply
             ? 'cursor-not-allowed opacity-50'
             : 'hover:bg-lightblue-500/20 cursor-pointer'
@@ -346,7 +346,7 @@ const TweetActions = ({
           <FaRegComment className={`h-6 w-6 transition-colors duration-200 ${
             pastTweet || hideReplies || !canReply ? 'text-gray-400' : 'group-hover:text-lightblue-500'
           }`} />
-        </div>
+        </button>
 
         {/* Retweet button */}
         {pastTweet ? (
@@ -358,19 +358,19 @@ const TweetActions = ({
             )}
           </div>
         ) : (
-          <RetweetDropdown onRetweet={retweetTweet} onQuote={handleQuote} disableQuote={!canQuote}>
+          <RetweetDropdown onRetweet={retweetTweet} onQuote={handleQuote} disableQuote={!canQuote} label={retweeted ? "Reposted" : "Repost"}>
             <div className="p-2 rounded-full hover:bg-green-500/20 transition-colors duration-200 cursor-pointer group">
               {!retweeted ? (
                 <FaRetweet className="h-6 w-6 group-hover:text-green-400 transition-colors duration-200" />
               ) : (
-                <FaRetweet className="h-6 w-6 text-green-400" />
+                <FaRetweet className="h-6 w-6 text-green-700 dark:text-green-400" />
               )}
             </div>
           </RetweetDropdown>
         )}
 
         {/* Like Button */}
-        <div className={`p-2 rounded-full transition-colors duration-200 group ${
+        <button type="button" aria-label="Like" aria-pressed={liked && !pastTweet} aria-disabled={pastTweet} className={`p-2 rounded-full transition-colors duration-200 group ${
           pastTweet ? 'cursor-not-allowed opacity-50' : 'hover:bg-red-500/20 cursor-pointer'
         }`} onClick={handleLike}>
           {!liked || pastTweet ? (
@@ -378,22 +378,22 @@ const TweetActions = ({
               pastTweet ? 'text-gray-400' : 'group-hover:text-red-500'
             }`} />
           ) : (
-            <RiHeart3Fill className={`h-6 w-6 ${pastTweet ? 'text-gray-400' : 'text-red-500'}`} />
+            <RiHeart3Fill className={`h-6 w-6 ${pastTweet ? 'text-gray-400' : 'text-red-600 dark:text-red-500'}`} />
           )}
-        </div>
+        </button>
 
         {/* Bookmark button */}
-        <div className={`p-2 rounded-full transition-colors duration-200 group ${
+        <button type="button" aria-label="Bookmark" aria-pressed={bookmarked && !pastTweet} aria-disabled={pastTweet} className={`p-2 rounded-full transition-colors duration-200 group ${
           pastTweet ? 'cursor-not-allowed opacity-50' : 'hover:bg-yellow-500/20 cursor-pointer'
         }`} onClick={handleBookmark}>
           {bookmarked && !pastTweet  ? (
-            <FaBookmark className={`h-5 w-5 ${pastTweet ? 'text-gray-400' : 'text-yellow-500'}`} />
+            <FaBookmark className={`h-5 w-5 ${pastTweet ? 'text-gray-400' : 'text-yellow-700 dark:text-yellow-500'}`} />
           ) : (
             <FaRegBookmark className={`h-5 w-5 transition-colors duration-200 ${
               pastTweet ? 'text-gray-400' : 'group-hover:text-yellow-500'
             }`} />
           )}
-        </div>
+        </button>
       </div>
     );
   }
@@ -402,7 +402,7 @@ const TweetActions = ({
     <div className="flex justify-start w-full text-gray-500">
       {/* Reply/Comment button */}
       <div className="flex-1 items-center flex">
-        <div className={`flex items-center space-x-2 p-2 rounded-full transition-colors duration-200 group ${
+        <button type="button" aria-label={`Reply, ${repliesCount}`} aria-disabled={pastTweet || hideReplies || !canReply} className={`flex items-center space-x-2 p-2 rounded-full transition-colors duration-200 group ${
           pastTweet || hideReplies || !canReply
             ? 'cursor-not-allowed opacity-50'
             : 'hover:bg-lightblue-500/20 cursor-pointer'
@@ -413,7 +413,7 @@ const TweetActions = ({
           <div className={`transition-colors duration-200 ${
             pastTweet || hideReplies || !canReply ? 'text-gray-400' : 'group-hover:text-lightblue-500'
           }`}>{repliesCount}</div>
-        </div>
+        </button>
       </div>
 
       {/* Retweet button */}
@@ -431,16 +431,16 @@ const TweetActions = ({
             />
           </div>
         ) : (
-          <RetweetDropdown onRetweet={retweetTweet} onQuote={handleQuote} disableQuote={!canQuote}>
+          <RetweetDropdown onRetweet={retweetTweet} onQuote={handleQuote} disableQuote={!canQuote} label={`${retweeted ? "Reposted" : "Repost"}, ${retweetsCount}`}>
             <div className="flex items-center space-x-2 p-2 rounded-full hover:bg-green-500/20 transition-colors duration-200 cursor-pointer group">
               {!retweeted ? (
                 <FaRetweet className="h-[18px] w-[18px] group-hover:text-green-400 transition-colors duration-200" />
               ) : (
-                <FaRetweet className="h-[18px] w-[18px] text-green-400" />
+                <FaRetweet className="h-[18px] w-[18px] text-green-700 dark:text-green-400" />
               )}
               <NumberFlow
                 value={retweetsCount}
-                className={`${retweeted ? "text-green-400" : "text-gray-500 group-hover:text-green-400"} transition-colors duration-200`}
+                className={`${retweeted ? "text-green-700 dark:text-green-400" : "text-gray-500 group-hover:text-green-400"} transition-colors duration-200`}
               />
             </div>
           </RetweetDropdown>
@@ -449,7 +449,7 @@ const TweetActions = ({
 
       {/* Like button */}
       <div className="flex-1 items-center flex">
-        <div className={`flex items-center space-x-2 p-2 rounded-full transition-colors duration-200 group ${
+        <button type="button" aria-label={`Like, ${likesCount}`} aria-pressed={liked && !pastTweet} aria-disabled={pastTweet} className={`flex items-center space-x-2 p-2 rounded-full transition-colors duration-200 group ${
           pastTweet ? 'cursor-not-allowed opacity-50' : 'hover:bg-red-500/20 cursor-pointer'
         }`} onClick={handleLike}>
           {!liked || pastTweet ? (
@@ -457,24 +457,24 @@ const TweetActions = ({
               pastTweet ? 'text-gray-400' : 'group-hover:text-red-500'
             }`} />
           ) : (
-            <RiHeart3Fill className={`h-[18px] w-[18px] ${pastTweet ? 'text-gray-400' : 'text-red-500'}`} />
+            <RiHeart3Fill className={`h-[18px] w-[18px] ${pastTweet ? 'text-gray-400' : 'text-red-600 dark:text-red-500'}`} />
           )}
           <NumberFlow
             value={likesCount}
             className={`${
-              pastTweet ? 'text-gray-400' : liked ? "text-red-500" : "text-gray-500 group-hover:text-red-500"
+              pastTweet ? 'text-gray-400' : liked ? "text-red-600 dark:text-red-500" : "text-gray-500 group-hover:text-red-500"
             } transition-colors duration-200`}
           />
-        </div>
+        </button>
       </div>
 
       {/* Bookmark button */}
       <div className="flex-1 items-center flex">
-        <div className={`flex items-center space-x-2 p-2 rounded-full transition-colors duration-200 group ${
+        <button type="button" aria-label={`Bookmark, ${bookmarksCount}`} aria-pressed={bookmarked && !pastTweet} aria-disabled={pastTweet} className={`flex items-center space-x-2 p-2 rounded-full transition-colors duration-200 group ${
           pastTweet ? 'cursor-not-allowed opacity-50' : 'hover:bg-yellow-500/20 cursor-pointer'
         }`} onClick={handleBookmark}>
           {bookmarked && !pastTweet ? (
-            <FaBookmark className={`h-[16px] w-[16px] ${pastTweet ? 'text-gray-400' : 'text-yellow-500'}`} />
+            <FaBookmark className={`h-[16px] w-[16px] ${pastTweet ? 'text-gray-400' : 'text-yellow-700 dark:text-yellow-500'}`} />
           ) : (
             <FaRegBookmark className={`h-[16px] w-[16px] transition-colors duration-200 ${
               pastTweet ? 'text-gray-400' : 'group-hover:text-yellow-500'
@@ -483,10 +483,10 @@ const TweetActions = ({
           <NumberFlow
             value={bookmarksCount}
             className={`${
-              pastTweet ? 'text-gray-400' : bookmarked ? "text-yellow-500" : "text-gray-500 group-hover:text-yellow-500"
+              pastTweet ? 'text-gray-400' : bookmarked ? "text-yellow-700 dark:text-yellow-500" : "text-gray-500 group-hover:text-yellow-500"
             } transition-colors duration-200`}
           />
-        </div>
+        </button>
       </div>
     </div>
   );

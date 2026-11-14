@@ -145,6 +145,7 @@ const SortableTweetList = ({
           items={filteredTweets}
           renderItem={renderItem}
           itemsPerPage={itemsPerPage}
+          feedLabel="Posts"
         />
       ) : (
         <div className="flex flex-col items-center justify-center py-16 text-gray-900 dark:text-gray-500">

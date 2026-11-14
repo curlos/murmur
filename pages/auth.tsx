@@ -143,14 +143,14 @@ const Auth = () => {
         </Head>
 
         {/* Navigation header */}
-        <div className="absolute top-4 right-4 z-10">
+        <nav aria-label="Guest" className="absolute top-4 right-4 z-10">
           <Link href="/">
             <button className="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-lightblue-500 dark:hover:text-lightblue-400 transition-colors duration-200">
               Continue as Guest
             </button>
           </Link>
-        </div>
-        <div className="hidden text-white md:flex flex-col flex-1 bg-lightblue-500 justify-center items-center p-12 lg:p-24">
+        </nav>
+        <aside aria-label="About Murmur" className="hidden text-white md:flex flex-col flex-1 bg-lightblue-500 justify-center items-center p-12 lg:p-24">
           <div className="space-y-5">
             <div className="flex space-x-3">
               <SearchIcon className="h-5 w-5" />
@@ -167,18 +167,18 @@ const Auth = () => {
               <p>Post, reply, and share what you think.</p>
             </div>
           </div>
-        </div>
+        </aside>
 
-        <div className="flex-1 flex justify-center items-center p-4 sm:p-12 lg:p-24 bg-white dark:bg-black">
+        <main className="flex-1 flex justify-center items-center p-4 sm:p-12 lg:p-24 bg-white dark:bg-black">
           <div>
             <MurmurLogo className="h-[30px] w-[30px] text-lightblue-500" />
-            <h2 className="text-2xl font-bold">Short posts. Real conversations.</h2>
-            <h6 className="font-bold">Join Murmur today</h6>
+            <h1 className="text-2xl font-bold">Short posts. Real conversations.</h1>
+            <p className="font-bold">Join Murmur today</p>
 
             {/* Credential-based authentication form */}
             <form onSubmit={handleCredentialAuth} className="space-y-4 my-6">
               {error && (
-                <div className="text-red-500 text-sm bg-red-50 p-2 rounded">
+                <div role="alert" className="text-red-700 text-sm bg-red-50 p-2 rounded">
                   {error}
                 </div>
               )}
@@ -186,29 +186,35 @@ const Auth = () => {
               {signUp && (
                 <input
                   type="text"
+                  aria-label="Full Name"
+                  autoComplete="name"
                   placeholder="Full Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full p-3 bg-white dark:bg-gray-800 text-black dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-lightblue-500 placeholder-gray-400"
+                  className="w-full p-3 bg-white dark:bg-gray-800 text-black dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-lightblue-500 placeholder-gray-500"
                   required
                 />
               )}
 
               <input
                 type="email"
+                aria-label="Email"
+                autoComplete="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full p-3 bg-white dark:bg-gray-800 text-black dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-lightblue-500 placeholder-gray-400"
+                className="w-full p-3 bg-white dark:bg-gray-800 text-black dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-lightblue-500 placeholder-gray-500"
                 required
               />
 
               <input
                 type="password"
+                aria-label="Password"
+                autoComplete={signUp ? 'new-password' : 'current-password'}
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full p-3 bg-white dark:bg-gray-800 text-black dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-lightblue-500 placeholder-gray-400"
+                className="w-full p-3 bg-white dark:bg-gray-800 text-black dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-lightblue-500 placeholder-gray-500"
                 required
               />
 
@@ -244,10 +250,10 @@ const Auth = () => {
                 })
             )}
 
-            {!signUp && <div>Don't have an account? <a className="text-lightblue-400 cursor-pointer hover:underline" onClick={() => { router.push('/auth?sign-up=true'); setError(''); }}>Sign Up</a></div>}
-            {signUp && <div>Already have an account? <a className="text-lightblue-400 cursor-pointer hover:underline" onClick={() => { router.push('/auth'); setError(''); }}>Sign In</a></div>}
+            {!signUp && <div>Don't have an account? <Link href="/auth?sign-up=true"><a className="text-lightblue-500 dark:text-lightblue-400 cursor-pointer underline" onClick={() => setError('')}>Sign Up</a></Link></div>}
+            {signUp && <div>Already have an account? <Link href="/auth"><a className="text-lightblue-500 dark:text-lightblue-400 cursor-pointer underline" onClick={() => setError('')}>Sign In</a></Link></div>}
           </div>
-        </div>
+        </main>
       </div>
     </div>
   );
