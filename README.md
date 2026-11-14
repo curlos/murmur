@@ -21,16 +21,16 @@ A full-stack social platform built with Next.js, TypeScript, and Firebase. Share
 <div align="center">
 
 ### 🏠 Homepage/Feed Page
-<img alt="Murmur home feed" src="https://github.com/user-attachments/assets/7f578db4-8432-43ea-a929-1d443ebdbd99" width="100%" />
+<img alt="Murmur home feed" src="https://github.com/user-attachments/assets/9c2ae268-f239-4ba1-807f-5b164c1307e0" width="100%" />
 
 ### 💬 Post Page
-<img alt="Murmur post page" src="https://github.com/user-attachments/assets/42d4680e-4c94-419e-aeac-8448e1d68042" width="100%" />
+<img alt="Murmur post page" src="https://github.com/user-attachments/assets/2ae39503-6438-4fac-b3bc-803e2e61a28a" width="100%" />
 
 ### 👤 Profile Page
-<img alt="Murmur profile page" src="https://github.com/user-attachments/assets/abea03e2-e6bd-4183-a1ba-09a3a7ae9455" width="100%" />
+<img alt="Murmur profile page" src="https://github.com/user-attachments/assets/94a5a439-3622-43d1-9e26-289c9fc52d86" width="100%" />
 
 ### 📰 News Page
-<img alt="Murmur news page" src="https://github.com/user-attachments/assets/2f1bc78e-c96b-470c-b3bd-af8cc7e31c0c" width="100%" />
+<img alt="Murmur news page" src="https://github.com/user-attachments/assets/3b438658-aa7a-415d-86bb-974a70b15c98" width="100%" />
 
 </div>
 
