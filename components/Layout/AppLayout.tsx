@@ -47,6 +47,10 @@ const AppLayout: React.FC<AppLayoutProps> = ({
             <meta property="og:type" content="website" />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={SITE_DESCRIPTION} />
+            <meta property="og:image" content="https://murmur-social-media.vercel.app/assets/og-image.png" />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+            <meta name="twitter:card" content="summary_large_image" />
           </Head>
 
           <main className={`bg-white text-black dark:bg-black dark:text-white min-h-screen flex`}>

@@ -3,16 +3,16 @@
 A full-stack social platform built with Next.js, TypeScript, and Firebase. Share short posts, follow people, and see your feed update in real time. Includes edit history, image cropping, and drag-to-reorder media.
 
 <div align="center">
-  <a href="https://twitter-clone-amber-eight.vercel.app/">
+  <a href="https://murmur-social-media.vercel.app/">
     <img src="./public/assets/murmur-logo.svg" alt="Murmur Logo" width="80" height="80">
   </a>
 
   <p align="center">
-    <a href="https://twitter-clone-amber-eight.vercel.app/">🌐 View Live Demo</a>
+    <a href="https://murmur-social-media.vercel.app/">🌐 View Live Demo</a>
     ·
-    <a href="https://github.com/curlos/twitter-2.0/issues">🐛 Report Bug</a>
+    <a href="https://github.com/curlos/murmur/issues">🐛 Report Bug</a>
     ·
-    <a href="https://github.com/curlos/twitter-2.0/issues">✨ Request Feature</a>
+    <a href="https://github.com/curlos/murmur/issues">✨ Request Feature</a>
   </p>
 </div>
 
@@ -88,7 +88,7 @@ A full-stack social platform built with Next.js, TypeScript, and Firebase. Share
 
 Try Murmur directly in your browser - no installation required!
 
-**🚀 [Visit Murmur →](https://twitter-clone-amber-eight.vercel.app/)**
+**🚀 [Visit Murmur →](https://murmur-social-media.vercel.app/)**
 
 Simply click the link above to start using the platform immediately. Create an account or sign in with Google to start posting, following users, and exploring the full social media experience.
 
@@ -105,7 +105,7 @@ Simply click the link above to start using the platform immediately. Create an a
 7. **Search**: Find specific posts, topics, or users
 8. **Customize**: Toggle between light and dark themes in settings
 
-**Live Site**: [https://twitter-clone-amber-eight.vercel.app/](https://twitter-clone-amber-eight.vercel.app/)
+**Live Site**: [https://murmur-social-media.vercel.app/](https://murmur-social-media.vercel.app/)
 
 ## 📝 License
 
