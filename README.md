@@ -21,17 +21,16 @@ A full-stack social platform built with Next.js, TypeScript, and Firebase. Share
 <div align="center">
 
 ### 🏠 Homepage/Feed Page
-<img alt="murmur-social-media vercel app_(Nest Hub Max)" src="https://github.com/user-attachments/assets/7f578db4-8432-43ea-a929-1d443ebdbd99" width="100%" />
+<img alt="Murmur home feed" src="https://github.com/user-attachments/assets/7f578db4-8432-43ea-a929-1d443ebdbd99" width="100%" />
 
 ### 💬 Post Page
-
-<img alt="murmur-social-media vercel app_post_Aj5Ju1n9kmLuI6Ly3vAw(Nest Hub Max)" src="https://github.com/user-attachments/assets/42d4680e-4c94-419e-aeac-8448e1d68042" width="100%" />
+<img alt="Murmur post page" src="https://github.com/user-attachments/assets/42d4680e-4c94-419e-aeac-8448e1d68042" width="100%" />
 
 ### 👤 Profile Page
-<img alt="murmur-social-media vercel app_profile_nba(Nest Hub Max)" src="https://github.com/user-attachments/assets/abea03e2-e6bd-4183-a1ba-09a3a7ae9455" width="100%" />
+<img alt="Murmur profile page" src="https://github.com/user-attachments/assets/abea03e2-e6bd-4183-a1ba-09a3a7ae9455" width="100%" />
 
 ### 📰 News Page
-<img alt="murmur-social-media vercel app_news(Nest Hub Max)" src="https://github.com/user-attachments/assets/2f1bc78e-c96b-470c-b3bd-af8cc7e31c0c" width="100%" />
+<img alt="Murmur news page" src="https://github.com/user-attachments/assets/2f1bc78e-c96b-470c-b3bd-af8cc7e31c0c" width="100%" />
 
 </div>
 
@@ -45,7 +44,7 @@ A full-stack social platform built with Next.js, TypeScript, and Firebase. Share
 ## ✨ Features
 
 ### Core Features
-- 📝 **Posts** - Create, edit, delete, and view posts with rich text support
+- 📝 **Posts** - Create, edit, delete, and view posts with images and emoji
 - 👤 **User Profiles** - Customizable profiles with bio, profile pictures, and user stats
 - 🔄 **Social Interactions** - Like, repost, quote, reply, and bookmark
 - 👥 **Follow System** - Follow/unfollow users and view followers/following lists
@@ -55,11 +54,10 @@ A full-stack social platform built with Next.js, TypeScript, and Firebase. Share
 ### Advanced Features
 - 🔐 **Authentication** - Secure login with Google OAuth and email/password
 - 🌙 **Dark/Light Mode** - Toggle between themes with persistent preferences
-- 📸 **Media Upload** - Image upload and storage with Firebase Storage
+- 📸 **Media Upload** - Image uploads with cropping and compression, stored on Cloudinary
 - ⚡ **Real-time Updates** - Live feed updates with Firebase Firestore
 - 🎨 **Modern UI** - Clean, familiar three-column interface with smooth animations
 - 📊 **User Analytics** - Post counts, follower statistics, and activity tracking
-- 🔔 **Notifications** - Activity alerts and interaction notifications
 - 📚 **Bookmarks** - Save posts for later viewing
 - 📰 **News** - A news page with the latest headlines
 
@@ -76,14 +74,14 @@ A full-stack social platform built with Next.js, TypeScript, and Firebase. Share
 
 ### Backend & Services
 - **Database**: Firebase Firestore
-- **Storage**: Firebase Storage
+- **Image Storage**: Cloudinary
 - **Authentication**: NextAuth.js
 - **Hosting**: Vercel
 
 ### Development Tools
 - **Package Manager**: npm
 - **Build Tool**: Next.js built-in
-- **Code Quality**: TypeScript, ESLint (configured in Next.js)
+- **Code Quality**: TypeScript
 
 ## 🌐 Live Demo
 
@@ -110,7 +108,7 @@ Simply click the link above to start using the platform immediately. Create an a
 
 ## 📝 License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 <div align="center">
   Made with ❤️ using Next.js, TypeScript, and Firebase
