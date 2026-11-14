@@ -20,17 +20,18 @@ A full-stack social platform built with Next.js, TypeScript, and Firebase. Share
 
 <div align="center">
 
-### 🏠 Homepage/Feed Page (Desktop & Mobile)
-<img src="https://github.com/user-attachments/assets/42086562-1e11-41c9-9dce-79485b515c84" height="250" /> <img src="https://github.com/user-attachments/assets/2d6f9e1b-ecb3-40b8-8289-09e220648a3c" height="250" />
+### 🏠 Homepage/Feed Page
+<img alt="murmur-social-media vercel app_(Nest Hub Max)" src="https://github.com/user-attachments/assets/7f578db4-8432-43ea-a929-1d443ebdbd99" width="100%" />
 
-### 💬 Post Page (Desktop & Mobile)
-<img src="https://github.com/user-attachments/assets/c94f6efe-e2fe-49ac-9053-679c9b46403e" height="250" /> <img src="https://github.com/user-attachments/assets/982ae6a3-af1e-436e-b8ee-6be7b62991d4" height="250" />
+### 💬 Post Page
 
-### 👤 Profile Page (Desktop & Mobile)
-<img src="https://github.com/user-attachments/assets/7755230c-c097-4433-bd6d-e2564bd7a754" height="250" /> <img src="https://github.com/user-attachments/assets/e06f3dfc-0420-4438-88af-920460eda924" height="250" />
+<img alt="murmur-social-media vercel app_post_Aj5Ju1n9kmLuI6Ly3vAw(Nest Hub Max)" src="https://github.com/user-attachments/assets/42d4680e-4c94-419e-aeac-8448e1d68042" width="100%" />
 
-### 📰 News Page (Desktop & Mobile)
-<img src="https://github.com/user-attachments/assets/45a78737-351b-4191-9a97-0eb67da3ef35" height="250" /> <img src="https://github.com/user-attachments/assets/6dff0460-dc30-4011-ad2c-f9b0daf9d0ce" height="250" />
+### 👤 Profile Page
+<img alt="murmur-social-media vercel app_profile_nba(Nest Hub Max)" src="https://github.com/user-attachments/assets/abea03e2-e6bd-4183-a1ba-09a3a7ae9455" width="100%" />
+
+### 📰 News Page
+<img alt="murmur-social-media vercel app_news(Nest Hub Max)" src="https://github.com/user-attachments/assets/2f1bc78e-c96b-470c-b3bd-af8cc7e31c0c" width="100%" />
 
 </div>
 
