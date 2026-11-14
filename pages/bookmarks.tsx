@@ -107,7 +107,7 @@ const Bookmarks = () => {
   }, [session?.user?.uid]);
 
   return (
-    <AppLayout title="Bookmarks / Twitter 2.0">
+    <AppLayout title="Bookmarks / Murmur">
       <ContentContainer>
         <PageHeader
           title="Bookmarks"
@@ -118,7 +118,7 @@ const Bookmarks = () => {
           tweets={tweets}
           loading={loading}
           emptyStateMessage="No Bookmarks"
-          emptyStateSubtitle="When you bookmark tweets, they'll show up here."
+          emptyStateSubtitle="When you bookmark posts, they'll show up here."
           itemsPerPage={10}
         />
       </ContentContainer>

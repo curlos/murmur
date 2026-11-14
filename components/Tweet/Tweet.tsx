@@ -228,7 +228,7 @@ const Tweet = ({ id, tweet, tweetID, tweetPage, topParentTweet, pastTweet, showF
       {!tweetPage && !showFullView ? (
         !loading && author ? (
           // This is the SIMPLE tweet where we won't see as much detailed information (like a thread of replies) but ONLY the content of the tweet and the author.
-          <div className={`${theme} max-w-full text-base ${showParentTweetConnectingLine ? 'p-3 pb-6' : 'p-3'} w-full ${!topParentTweet && !showParentTweetConnectingLine ? 'border-b border-[#AAB8C2]  dark:border-gray-700' : ''}`}>
+          <div className={`${theme} max-w-full text-base ${showParentTweetConnectingLine ? 'p-3 pb-6' : 'p-3'} w-full ${!topParentTweet && !showParentTweetConnectingLine ? 'border-b border-[#C8B9B1]  dark:border-gray-700' : ''}`}>
             <SmallTweet {...{
               retweetedBy,
               session,

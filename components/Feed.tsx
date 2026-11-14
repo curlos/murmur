@@ -64,8 +64,8 @@ const Feed = () => {
 
   return (
     
-    <div className={`${theme} flex-grow w-text-lg border-r border-[#AAB8C2] dark:border-gray-700`}>
-      <div className={`bg-white dark:bg-black border-b border-[#AAB8C2] dark:border-gray-700 p-3 sticky top-0 z-40`}>
+    <div className={`${theme} flex-grow w-text-lg border-r border-[#C8B9B1] dark:border-gray-700`}>
+      <div className={`bg-white dark:bg-black border-b border-[#C8B9B1] dark:border-gray-700 p-3 sticky top-0 z-40`}>
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
             <h2 className="font-bold">{router.query.query ? `Search results for: ${router.query.query}` : 'Home'}</h2>
@@ -95,8 +95,8 @@ const Feed = () => {
       <SortableTweetList
         tweets={filteredTweets}
         loading={loading}
-        emptyStateMessage="No tweets yet"
-        emptyStateSubtitle="When people post tweets, they'll show up here."
+        emptyStateMessage="No posts yet"
+        emptyStateSubtitle="When people post, their posts will show up here."
         itemsPerPage={10}
       />
     </div>

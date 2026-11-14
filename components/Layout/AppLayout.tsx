@@ -21,7 +21,7 @@ interface AppLayoutProps {
 
 const AppLayout: React.FC<AppLayoutProps> = ({
   children,
-  title = 'Twitter 2.0',
+  title = 'Murmur',
   showWidgets = true,
   setIsEditing
 }) => {
@@ -38,7 +38,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({
         <div className={`max-w-7xl mx-auto`}>
           <Head>
             <title>{title}</title>
-            <link rel="icon" href="/assets/twitter-logo.svg" />
+            <link rel="icon" href="/assets/murmur-logo.svg" />
           </Head>
 
           <main className={`bg-white text-black dark:bg-black dark:text-white min-h-screen flex`}>

@@ -15,7 +15,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { colorThemeState, newTweetModalState, searchModalState, authModalState } from "../atoms/atom";
 import { useRouter } from "next/router";
 import { FaFeatherAlt, FaSearch } from "react-icons/fa";
-import { BsTwitter } from "react-icons/bs";
+import MurmurLogo from "./MurmurLogo";
 
 /**
  * @description - Renders the sidebar (only on DESKTOP) that shows the most common pages a user could go to as well as actions they could take such as "Home", "Search", "Bookmarks", "Profile", "Logout", "New Tweet" and information about them such as their profile pic, name and username. The mobile equivalent is the "SidenavDrawer" component.
@@ -53,7 +53,7 @@ const Sidebar = () => {
     <div className={`${theme} hidden sm:flex flex-col sticky top-0 h-screen px-4 pt-4 xl:overflow-auto scrollbar-hide border-r border-gray-400 dark:border-gray-700 w-[80px] xl:w-[280px] py-4`}>
       <div className="flex flex-col justify-start items-center xl:items-start space-y-6 flex-grow">
         <div className="cursor-pointer" onClick={() => router.push('/')}>
-          <BsTwitter className="h-[30px] w-[30px] text-lightblue-500 dark:text-white" />
+          <MurmurLogo className="h-[30px] w-[30px] text-lightblue-500" />
         </div>
 
         <SidebarLink text="Home" Icon={HomeIcon} IconSolid={HomeIconSolid} active={activeLink === 'home'} />
@@ -88,7 +88,7 @@ const Sidebar = () => {
           }
           setIsOpen(true);
         }}>
-          Tweet
+          Post
         </button>
 
         {/* This is for mobile which by default will show the blue feather to post a tweet. I could remove it if the user is not logged in but for the purpose of the site, I think it'd be better to leave it there and link to the auth page if the user wants to tweet. */}

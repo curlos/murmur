@@ -50,13 +50,13 @@ const RetweetDropdown: React.FC<RetweetDropdownProps> = ({
             >
               <Menu.Items
                 static
-                className="absolute left-0 w-40 mt-2 origin-top-left divide-y rounded-md shadow-gray-800 shadow-lg outline-none border border-[#AAB8C2] dark:border-gray-700 z-[100]"
+                className="absolute left-0 w-40 mt-2 origin-top-left divide-y rounded-md shadow-gray-800 shadow-lg outline-none border border-[#C8B9B1] dark:border-gray-700 z-[100]"
               >
                 <div className="bg-white dark:bg-black rounded-md">
                   <div className="py-1">
                     <DropdownMenuItem
                       icon={FaRetweet}
-                      text="Retweet"
+                      text="Repost"
                       onClick={(e) => handleRetweetClick(e as React.MouseEvent, onRetweet)}
                     />
                     <DropdownMenuItem

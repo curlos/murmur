@@ -49,10 +49,10 @@ export const SearchModal = () => {
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <div className="inline-block bg-white dark:bg-black rounded-2xl text-left overflow-hidden shadow-xl transform transition-all my-8 align-top max-w-lg w-[95vw] lg:w-[50vw]" onClick={(e) => e.stopPropagation()}>
-              <div className="bg-white dark:bg-black p-3 border-b border-[#AAB8C2] dark:border-gray-700">
+              <div className="bg-white dark:bg-black p-3 border-b border-[#C8B9B1] dark:border-gray-700">
                 <div className="flex items-center gap-2">
                   <SearchIcon className="h-5 w-5 text-gray-700 dark:text-gray-400 dark:text-white" />
-                  <input type="text" value={searchQuery} placeholder="Search Twitter 2.0" className="bg-white dark:bg-black text-black dark:text-white outline-none font-2xl w-full" onChange={(e) => setSearchQuery(e.target.value)} />
+                  <input type="text" value={searchQuery} placeholder="Search Murmur" className="bg-white dark:bg-black text-black dark:text-white outline-none font-2xl w-full" onChange={(e) => setSearchQuery(e.target.value)} />
                 </div>
               </div>
             </div>

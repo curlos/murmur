@@ -14,7 +14,7 @@ const MobileBottomNavBar: React.FC = () => {
   const [_sidenavOpen, setSidenavOpen] = useRecoilState(sidenavState);
 
   return (
-    <div className="sm:hidden fixed bottom-0 w-full border-t-[1px] bg-white border-[#AAB8C2] dark:bg-black  dark:border-gray-700 p-4 px-6 flex items-center h-[60px]">
+    <div className="sm:hidden fixed bottom-0 w-full border-t-[1px] bg-white border-[#C8B9B1] dark:bg-black  dark:border-gray-700 p-4 px-6 flex items-center h-[60px]">
       {/* Will redirect back home to the user's feed. */}
       <div className="flex-1 flex justify-center">
         <Link href={`/`}>

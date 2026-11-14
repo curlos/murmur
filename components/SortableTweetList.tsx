@@ -25,7 +25,7 @@ const SortableTweetList = ({
   tweets,
   id,
   loading = false,
-  emptyStateMessage = 'No Tweets',
+  emptyStateMessage = 'No Posts',
   emptyStateSubtitle = 'When you post, they\'ll show up here.',
   emptyStateIcon: EmptyIcon,
   customRenderItem,
@@ -50,7 +50,7 @@ const SortableTweetList = ({
         return sortByMostReplies(tweetsToSort);
       case 'Most Bookmarks':
         return sortByMostBookmarks(tweetsToSort);
-      case 'Most Retweets':
+      case 'Most Reposts':
         return sortByMostRetweets(tweetsToSort);
       default:
         return sortByNewest(tweetsToSort);

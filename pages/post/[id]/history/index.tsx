@@ -16,13 +16,13 @@ const TweetVersionHistory = () => {
     const replyingToValidParentTweet = parentTweet && parentTweet.data() && !isQuoteTweet
 
     return (
-        <AppLayout title={author ? `${author.name} on Twitter: "${tweet?.text}"` : "Tweet History / Twitter 2.0"}>
+        <AppLayout title={author ? `${author.name} on Murmur: "${tweet?.text}"` : "Edit History / Murmur"}>
             <ContentContainer loading={loading || !tweet || !author}>
                 <PageHeader title="Edit History">
                     <SparklesIcon className="h-5 w-5" />
                 </PageHeader>
 
-                <div className="font-bold text-xl p-3">Latest Tweet</div>
+                <div className="font-bold text-xl p-3">Latest Post</div>
 
                 {replyingToValidParentTweet && (
                     <Tweet id={parentTweet.id} tweet={parentTweet.data()} tweetID={parentTweet.id} topParentTweet={true} showParentTweetConnectingLine={true} />
@@ -52,7 +52,7 @@ const TweetVersionHistory = () => {
                     <div className="flex flex-col items-center justify-center py-16 text-gray-900 dark:text-gray-500">
                         <ClockIcon className="h-12 w-12 mb-4" />
                         <p className="text-xl font-semibold">No edit history</p>
-                        <p className="text-gray-700 dark:text-gray-400 mt-2">This tweet hasn't been edited yet</p>
+                        <p className="text-gray-700 dark:text-gray-400 mt-2">This post hasn't been edited yet</p>
                     </div>
                 )}
 

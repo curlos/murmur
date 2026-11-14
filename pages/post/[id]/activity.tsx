@@ -28,8 +28,9 @@ const TweetActivity = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const urlContainsQuotes = !router.query.retweets && !router.query.likes;
-  const urlContainsRetweets = router.query.retweets === 'true';
+  const urlContainsQuotes = !router.query.reposts && !router.query.retweets && !router.query.likes;
+  // Old "?retweets=true" links still open the Reposts tab
+  const urlContainsRetweets = router.query.reposts === 'true' || router.query.retweets === 'true';
   const urlContainsLikes = router.query.likes === 'true';
 
   useEffect(() => {
@@ -167,21 +168,21 @@ const TweetActivity = () => {
 
   const handleTabChange = (tab: string) => {
     if (tab === 'quotes') {
-      router.push(`/tweet/${id}/activity`, undefined, { shallow: true });
+      router.push(`/post/${id}/activity`, undefined, { shallow: true });
     } else if (tab === 'retweets') {
-      router.push(`/tweet/${id}/activity?retweets=true`, undefined, { shallow: true });
+      router.push(`/post/${id}/activity?reposts=true`, undefined, { shallow: true });
     } else if (tab === 'likes') {
-      router.push(`/tweet/${id}/activity?likes=true`, undefined, { shallow: true });
+      router.push(`/post/${id}/activity?likes=true`, undefined, { shallow: true });
     }
   };
 
   return (
-    <AppLayout title={`Tweet Activity`}>
+    <AppLayout title={`Post Activity / Murmur`}>
       <ContentContainer loading={loading}>
         {tweet && author && (
           <>
             <PageHeader
-              title="Tweet Activity"
+              title="Post Activity"
             />
 
             {/* Original Tweet */}
@@ -217,7 +218,7 @@ const TweetActivity = () => {
               >
                 <div className={`${urlContainsRetweets && 'text-lightblue-500 dark:text-white font-bold'} flex-1 py-4 flex justify-center items-center gap-2`}>
                   <FaRetweet className="h-5 w-5" />
-                  Retweets
+                  Reposts
                 </div>
                 {urlContainsRetweets && (
                   <div className="w-full h-1 m-0 bg-lightblue-400 rounded-full" />
@@ -246,7 +247,7 @@ const TweetActivity = () => {
                 tweets={quotes}
                 loading={false}
                 emptyStateMessage="No quotes yet"
-                emptyStateSubtitle="This tweet hasn't been quoted by anyone yet."
+                emptyStateSubtitle="This post hasn't been quoted by anyone yet."
                 emptyStateIcon={ChatAltIcon}
                 itemsPerPage={10}
               />
@@ -259,8 +260,8 @@ const TweetActivity = () => {
                   ...retweet.userData
                 }))}
                 loading={retweetsLoading}
-                emptyStateMessage="No retweets"
-                emptyStateSubtitle="This tweet hasn't been retweeted by anyone yet."
+                emptyStateMessage="No reposts"
+                emptyStateSubtitle="This post hasn't been reposted by anyone yet."
                 emptyStateIcon={FaRetweet}
                 itemsPerPage={10}
                 showFollowerSortOptions={false}
@@ -275,7 +276,7 @@ const TweetActivity = () => {
                 }))}
                 loading={likesLoading}
                 emptyStateMessage="No likes"
-                emptyStateSubtitle="This tweet hasn't been liked by anyone yet."
+                emptyStateSubtitle="This post hasn't been liked by anyone yet."
                 emptyStateIcon={HeartIcon}
                 itemsPerPage={10}
                 showFollowerSortOptions={false}

@@ -21,7 +21,7 @@ const ContentContainer: React.FC<ContentContainerProps> = ({
   }
 
   return (
-    <div className={`min-h-screen flex-grow text-lg border-r border-[#AAB8C2] dark:border-gray-700 ${className}`}>
+    <div className={`min-h-screen flex-grow text-lg border-r border-[#C8B9B1] dark:border-gray-700 ${className}`}>
       {children}
       <div className="h-[60px]" />
     </div>

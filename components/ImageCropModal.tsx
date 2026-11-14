@@ -147,7 +147,7 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <div className="inline-block align-bottom bg-white dark:bg-black rounded-2xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle w-[90vw] lg:w-[50vw]">
-                <div className="bg-white dark:bg-black p-3 border-b border-[#AAB8C2] dark:border-gray-700">
+                <div className="bg-white dark:bg-black p-3 border-b border-[#C8B9B1] dark:border-gray-700">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <XIcon
@@ -186,7 +186,7 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
                   </ReactCrop>
                 </div>
 
-                <div className="p-3 bg-white dark:bg-black border-t border-[#AAB8C2] dark:border-gray-700">
+                <div className="p-3 bg-white dark:bg-black border-t border-[#C8B9B1] dark:border-gray-700">
                   <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
                     Drag the selection to reposition your {imageType === 'profile' ? 'profile picture' : 'banner'}
                   </p>

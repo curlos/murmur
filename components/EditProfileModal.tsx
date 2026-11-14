@@ -314,7 +314,7 @@ const EditProfileModal = () => {
                   </div>
                 )}
 
-                <div className="bg-white dark:bg-black p-3 border-b border-[#AAB8C2] dark:border-gray-700">
+                <div className="bg-white dark:bg-black p-3 border-b border-[#C8B9B1] dark:border-gray-700">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <XIcon className="h-6 w-6 cursor-pointer text-gray-700 dark:text-gray-400" onClick={(val) => {
@@ -453,7 +453,7 @@ const EditProfileModal = () => {
                       />
                     </div>
 
-                    <div className="p-2 border border-[#AAB8C2] border-gray-700 space-y-1 rounded">
+                    <div className="p-2 border border-[#C8B9B1] border-gray-700 space-y-1 rounded">
                       <div className="text-sm text-gray-700 dark:text-gray-400 flex justify-between">
                         <div>Location</div>
                         <div>{location.length} / 30</div>
@@ -470,7 +470,7 @@ const EditProfileModal = () => {
                       />
                     </div>
 
-                    <div className="p-2 border border-[#AAB8C2] border-gray-700 space-y-1 rounded">
+                    <div className="p-2 border border-[#C8B9B1] border-gray-700 space-y-1 rounded">
                       <div className="text-sm text-gray-700 dark:text-gray-400 flex justify-between">
                         <div>Website</div>
                         <div>{website.length} / 100</div>

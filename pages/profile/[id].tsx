@@ -63,7 +63,7 @@ const ProfileHeader = ({ author, session, id, followed, handleEditOrFollow, foll
         />
 
         <div className="flex items-center space-x-2">
-          <div className="flex justify-center items-center p-2 px-4 border-2 border-[#AAB8C2] dark:border-gray-700 rounded-full cursor-pointer" onClick={handleEditOrFollow}>
+          <div className="flex justify-center items-center p-2 px-4 border-2 border-[#C8B9B1] dark:border-gray-700 rounded-full cursor-pointer" onClick={handleEditOrFollow}>
             {session && session.user && session.user.tag === String(id) ? 'Edit Profile' : (followed ? 'Following' : 'Follow')}
           </div>
         </div>
@@ -547,7 +547,7 @@ const ProfilePage = () => {
   };
 
   return (
-    <AppLayout title={author ? `${author.name} (@${author.tag}) / Twitter 2.0` : "Profile / Twitter 2.0"}>
+    <AppLayout title={author ? `${author.name} (@${author.tag}) / Murmur` : "Profile / Murmur"}>
       <ContentContainer loading={loading}>
         {author && (
           <>
@@ -558,7 +558,7 @@ const ProfilePage = () => {
                   <HiBadgeCheck className="h-6 w-6 text-lightblue-500 ml-1 mb-[2px]" />
                 </div>
               }
-              subtitle={`${tweets.length} Tweets`}
+              subtitle={`${tweets.length} Posts`}
             />
 
             <ProfileHeader
@@ -604,7 +604,7 @@ const FilterTabs = ({ filter, setFilter }) => {
           onClick={() => setFilter(tab)}
         >
           <div className={`${filter === tab && 'text-black dark:text-white font-bold'} flex-1 py-2 flex justify-center items-center`}>
-            {tab}
+            {tab.replace('Tweets', 'Posts')}
           </div>
           {filter === tab ? (
             <div className="w-full h-1 m-0 bg-lightblue-400 rounded-full" />

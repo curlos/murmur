@@ -14,7 +14,7 @@ export const TweetSentAlert: React.FC = () => {
         setAlertState({
           isVisible: false,
           tweetId: '',
-          message: 'Your tweet was sent'
+          message: 'Your post was sent'
         });
       }, 3000);
 
@@ -24,12 +24,12 @@ export const TweetSentAlert: React.FC = () => {
 
   const handleViewClick = () => {
     if (alertState.tweetId) {
-      router.push(`/tweet/${alertState.tweetId}`);
+      router.push(`/post/${alertState.tweetId}`);
     }
     setAlertState({
       isVisible: false,
       tweetId: '',
-      message: 'Your tweet was sent'
+      message: 'Your post was sent'
     });
   };
 

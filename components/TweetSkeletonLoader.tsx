@@ -15,7 +15,7 @@ const SkeletonBar = ({ width }: { width: string }) => (
 
 const TweetSkeletonLoader = () => {
   return (
-    <div className="p-3 border-b border-[#AAB8C2] dark:border-gray-700 animate-pulse">
+    <div className="p-3 border-b border-[#C8B9B1] dark:border-gray-700 animate-pulse">
       <div className="flex">
         <div className="mr-2">
           <div className="rounded-full h-[55px] w-[55px] bg-gray-300 dark:bg-gray-600"></div>

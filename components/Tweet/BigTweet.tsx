@@ -42,7 +42,7 @@ const BigTweet = ({
 }) => {
   return (
     <div
-      className={`text-base border-b border-[#AAB8C2] dark:border-gray-700 w-full ${isReplyTweetWithConnectedLine ? "p-3 pt-0" : "p-3"}`}
+      className={`text-base border-b border-[#C8B9B1] dark:border-gray-700 w-full ${isReplyTweetWithConnectedLine ? "p-3 pt-0" : "p-3"}`}
     >
       {/* Top of the tweet where the information about it's author is shown.  */}
       <TweetTopGeneralInfo {...{ author, showParentTweetConnectingLine, pastTweet, tweet, id, authorId, deleteTweet }} />
@@ -95,7 +95,7 @@ const BigTweet = ({
 
             <div className="space-x-1">
               <NumberFlow value={retweetsCount} className="font-bold" />
-              <span className="text-gray-500">Retweets</span>
+              <span className="text-gray-500">Reposts</span>
             </div>
 
             <div className="space-x-1">
@@ -135,7 +135,7 @@ const BigTweet = ({
             className="flex items-center gap-1 text-gray-500 hover:text-lightblue-500 transition-colors duration-200 pt-2 hover:underline"
             onClick={(e) => {
               e.stopPropagation();
-              router.push(`/tweet/${id}/activity`);
+              router.push(`/post/${id}/activity`);
             }}
           >
             View quotes and activity
@@ -204,7 +204,7 @@ const TweetBottomGeneralInfo = ({ editedTweet, id, tweet, handleInteractionClick
           className={`flex gap-1 ${editedTweet ? "cursor-pointer" : ""}`}
           onClick={() => {
             if (editedTweet) {
-              router.push(`/tweet/${id}/history`);
+              router.push(`/post/${id}/history`);
             }
           }}
         >
@@ -238,7 +238,7 @@ const TweetBottomGeneralInfo = ({ editedTweet, id, tweet, handleInteractionClick
           className={`flex gap-1 mb-2 ${editedTweet ? "cursor-pointer" : ""}`}
           onClick={() => {
             if (editedTweet) {
-              router.push(`/tweet/${id}/history`);
+              router.push(`/post/${id}/history`);
             }
           }}
         >
@@ -277,7 +277,7 @@ const TweetImages = ({ tweet, handleImageClick }) => {
             <img
               src={tweet.images[0]}
               alt=""
-              className="rounded-2xl w-full object-contain border border-[#AAB8C2] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity"
+              className="rounded-2xl w-full object-contain border border-[#C8B9B1] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity"
               onClick={(e) => handleImageClick(e, 0)}
             />
           ) : tweet.images.length === 2 ? (
@@ -287,7 +287,7 @@ const TweetImages = ({ tweet, handleImageClick }) => {
                   key={index}
                   src={image}
                   alt=""
-                  className={`w-full aspect-[1/1] object-cover border border-[#AAB8C2] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity ${
+                  className={`w-full aspect-[1/1] object-cover border border-[#C8B9B1] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity ${
                     index === 0 ? "rounded-l-2xl" : "rounded-r-2xl"
                   }`}
                   onClick={(e) => handleImageClick(e, index)}
@@ -299,20 +299,20 @@ const TweetImages = ({ tweet, handleImageClick }) => {
               <img
                 src={tweet.images[0]}
                 alt=""
-                className="rounded-l-2xl w-full h-full aspect-[6/2] object-cover border border-[#AAB8C2] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity"
+                className="rounded-l-2xl w-full h-full aspect-[6/2] object-cover border border-[#C8B9B1] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity"
                 onClick={(e) => handleImageClick(e, 0)}
               />
               <div className="flex flex-col gap-2">
                 <img
                   src={tweet.images[1]}
                   alt=""
-                  className="rounded-tr-2xl w-full aspect-[3/2] object-cover border border-[#AAB8C2] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity"
+                  className="rounded-tr-2xl w-full aspect-[3/2] object-cover border border-[#C8B9B1] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity"
                   onClick={(e) => handleImageClick(e, 1)}
                 />
                 <img
                   src={tweet.images[2]}
                   alt=""
-                  className="rounded-br-2xl w-full aspect-[3/2] object-cover border border-[#AAB8C2] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity"
+                  className="rounded-br-2xl w-full aspect-[3/2] object-cover border border-[#C8B9B1] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity"
                   onClick={(e) => handleImageClick(e, 2)}
                 />
               </div>
@@ -324,7 +324,7 @@ const TweetImages = ({ tweet, handleImageClick }) => {
                   <img
                     src={image}
                     alt=""
-                    className={`w-full aspect-[3/2] object-cover border border-[#AAB8C2] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity ${
+                    className={`w-full aspect-[3/2] object-cover border border-[#C8B9B1] dark:border-gray-700 cursor-pointer hover:opacity-90 transition-opacity ${
                       index === 0
                         ? "rounded-tl-2xl"
                         : index === 1

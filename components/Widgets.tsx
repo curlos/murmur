@@ -67,7 +67,7 @@ const Widgets = () => {
         <div className="text-gray-500 bg-gray-200 dark:bg-gray-800 p-3 rounded-l-full">
           <SearchIcon className="h-6 w-6" />
         </div>
-        <input placeholder="Search Twitter 2.0" value={searchQuery} className="bg-gray-200 dark:bg-gray-800 rounded-r-full p-3 w-[300px] focus:outline-none" onChange={(e) => setSearchQuery(e.target.value)}></input>
+        <input placeholder="Search Murmur" value={searchQuery} className="bg-gray-200 dark:bg-gray-800 rounded-r-full p-3 w-[300px] focus:outline-none" onChange={(e) => setSearchQuery(e.target.value)}></input>
       </div>
 
       {/* Displays the current, trending events of the day. Right now, will display ONLY video game news. */}

@@ -15,7 +15,7 @@ const CircularProgress = ({ current, max, size = 20, strokeWidth = 2 }: Props) =
 
   const getColor = () => {
     if (percentage >= 100) return '#ef4444'; // red-500
-    return '#3b82f6'; // blue-500
+    return '#F0532B'; // lightblue-500 (brand accent)
   };
 
   return (

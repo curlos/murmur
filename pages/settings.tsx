@@ -30,7 +30,7 @@ const Settings = () => {
   }, [session]);
 
   return (
-    <AppLayout title="Settings / Twitter 2.0">
+    <AppLayout title="Settings / Murmur">
       <ContentContainer>
         <PageHeader
           title="Settings"

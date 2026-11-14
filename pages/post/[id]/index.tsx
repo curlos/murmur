@@ -20,11 +20,11 @@ const TweetPage = () => {
 
     return (
         <AppLayout
-            title={author ? `${author.name} on Twitter: "${tweet?.text}"` : "Tweet / Twitter 2.0"}
+            title={author ? `${author.name} on Murmur: "${tweet?.text}"` : "Post / Murmur"}
             setIsEditing={setIsEditing}
         >
             <ContentContainer loading={loading || !tweet || !author}>
-                <PageHeader title="Tweet">
+                <PageHeader title="Post">
                     <SparklesIcon className="h-5 w-5" />
                 </PageHeader>
 
@@ -42,7 +42,7 @@ const TweetPage = () => {
                     <div className="flex flex-col items-center justify-center py-16 text-gray-500">
                         <ChatAltIcon className="h-12 w-12 mb-4" />
                         <p className="text-xl font-semibold">Replies are hidden</p>
-                        <p className="text-gray-700 dark:text-gray-400 mt-2">The author has hidden replies to this tweet</p>
+                        <p className="text-gray-700 dark:text-gray-400 mt-2">The author has hidden replies to this post</p>
                     </div>
                 ) : (
                     <SortableTweetList

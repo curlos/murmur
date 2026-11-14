@@ -216,8 +216,8 @@ const Input = ({ tweetToEdit, setTweetToEdit, tweetBeingRepliedToId, isNewReply,
 
       // Show success alert
       const message = isNewReply ? 'Your reply was sent' :
-                     isNewQuote ? 'Your quote tweet was sent' :
-                     'Your tweet was sent';
+                     isNewQuote ? 'Your quote was sent' :
+                     'Your post was sent';
 
       setTweetSentAlert({
         isVisible: true,
@@ -303,7 +303,7 @@ const Input = ({ tweetToEdit, setTweetToEdit, tweetBeingRepliedToId, isNewReply,
       setTweetSentAlert({
         isVisible: true,
         tweetId: currentTweet.tweetId,
-        message: 'Your tweet was updated'
+        message: 'Your post was updated'
       });
     } catch (error) {
       // Error is already handled in uploadImagesAndGetURLs
@@ -502,8 +502,6 @@ const Input = ({ tweetToEdit, setTweetToEdit, tweetBeingRepliedToId, isNewReply,
   };
 
   const getButtonObject = () => {
-    { !isNewReply ? 'Tweet' : 'Reply'; }
-
     if (isNewReply) {
       return {
         text: 'Reply',
@@ -521,14 +519,14 @@ const Input = ({ tweetToEdit, setTweetToEdit, tweetBeingRepliedToId, isNewReply,
       };
     } else {
       return {
-        text: 'Tweet',
+        text: 'Post',
         function: sendTweet
       };
     }
   };
 
   return (
-    <div className={`w-full relative flex sm:block space-x-2 z-10 border-b border-[#AAB8C2] dark:border-gray-700 ${fromModal ? 'border-none' : ''}`}>
+    <div className={`w-full relative flex sm:block space-x-2 z-10 border-b border-[#C8B9B1] dark:border-gray-700 ${fromModal ? 'border-none' : ''}`}>
       {(loading || compressingImages) && (
         <div className="absolute inset-0 flex flex-col justify-center items-center z-20 bg-white/50 dark:bg-black/50 pt-2">
           <Spinner />
@@ -547,7 +545,7 @@ const Input = ({ tweetToEdit, setTweetToEdit, tweetBeingRepliedToId, isNewReply,
         </Link>
 
         <div className="w-full">
-          <div className="border-b border-[#AAB8C2] dark:border-gray-700">
+          <div className="border-b border-[#C8B9B1] dark:border-gray-700">
             <TextareaAutosize
               value={input}
               onChange={handleTextChange}
@@ -591,7 +589,7 @@ const Input = ({ tweetToEdit, setTweetToEdit, tweetBeingRepliedToId, isNewReply,
           {!loading && !compressingImages && (
             <div>
               {/* Interaction settings display - only show for new tweets, not edits */}
-              <div className="flex items-center gap-1 py-2 border-t border-[#AAB8C2] dark:border-gray-700">
+              <div className="flex items-center gap-1 py-2 border-t border-[#C8B9B1] dark:border-gray-700">
                 <div
                   className="text-gray-500 hover:underline cursor-pointer flex items-center gap-1 text-sm"
                   onClick={handleInteractionClick}
@@ -645,7 +643,7 @@ const Input = ({ tweetToEdit, setTweetToEdit, tweetBeingRepliedToId, isNewReply,
           </Link>
 
           <div className="w-full">
-            <div className="border-b border-[#AAB8C2] dark:border-gray-700">
+            <div className="border-b border-[#C8B9B1] dark:border-gray-700">
               <TextareaAutosize
                 value={input}
                 onChange={handleTextChange}

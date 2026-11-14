@@ -35,7 +35,7 @@ const SortableImageItem: React.FC<SortableImageItemProps> = ({ id, image, index,
     >
       <div className="relative">
         <div
-          className="absolute w-8 h-7 bg-[#15181c] hover:bg-[#272c26] bg-opacity-75 rounded-full flex items-center justify-center top-1 right-1 cursor-pointer z-10"
+          className="absolute w-8 h-7 bg-[#1F1814] hover:bg-[#2E2420] bg-opacity-75 rounded-full flex items-center justify-center top-1 right-1 cursor-pointer z-10"
           onClick={(e) => {
             e.stopPropagation();
             onRemove(index);

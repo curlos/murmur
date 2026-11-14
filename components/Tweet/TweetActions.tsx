@@ -341,10 +341,10 @@ const TweetActions = ({
         <div className={`p-2 rounded-full transition-colors duration-200 group ${
           pastTweet || hideReplies || !canReply
             ? 'cursor-not-allowed opacity-50'
-            : 'hover:bg-blue-500/20 cursor-pointer'
+            : 'hover:bg-lightblue-500/20 cursor-pointer'
         }`} onClick={handleReplyToTweet}>
           <FaRegComment className={`h-6 w-6 transition-colors duration-200 ${
-            pastTweet || hideReplies || !canReply ? 'text-gray-400' : 'group-hover:text-blue-500'
+            pastTweet || hideReplies || !canReply ? 'text-gray-400' : 'group-hover:text-lightblue-500'
           }`} />
         </div>
 
@@ -405,13 +405,13 @@ const TweetActions = ({
         <div className={`flex items-center space-x-2 p-2 rounded-full transition-colors duration-200 group ${
           pastTweet || hideReplies || !canReply
             ? 'cursor-not-allowed opacity-50'
-            : 'hover:bg-blue-500/20 cursor-pointer'
+            : 'hover:bg-lightblue-500/20 cursor-pointer'
         }`} onClick={handleReplyToTweet}>
           <FaRegComment className={`h-[18px] w-[18px] transition-colors duration-200 ${
-            pastTweet || hideReplies || !canReply ? 'text-gray-400' : 'group-hover:text-blue-500'
+            pastTweet || hideReplies || !canReply ? 'text-gray-400' : 'group-hover:text-lightblue-500'
           }`} />
           <div className={`transition-colors duration-200 ${
-            pastTweet || hideReplies || !canReply ? 'text-gray-400' : 'group-hover:text-blue-500'
+            pastTweet || hideReplies || !canReply ? 'text-gray-400' : 'group-hover:text-lightblue-500'
           }`}>{repliesCount}</div>
         </div>
       </div>

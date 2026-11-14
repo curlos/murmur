@@ -75,15 +75,15 @@ const ProfileTweets = ({ tweets, retweetedTweets, likedTweets, filter }: Props) 
   const getEmptyStateMessage = () => {
     switch (filter) {
       case 'Tweets':
-        return 'No Tweets';
+        return 'No Posts';
       case 'Tweets & Replies':
-        return 'No Tweets & Replies';
+        return 'No Posts & Replies';
       case 'Media':
         return 'No Media';
       case 'Likes':
         return 'No Likes';
       default:
-        return 'No Tweets';
+        return 'No Posts';
     }
   };
 

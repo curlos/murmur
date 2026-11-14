@@ -33,7 +33,7 @@ const EmojiDropdown: React.FC<EmojiDropdownProps> = ({ onEmojiSelect }) => {
             >
               <Menu.Items
                 static
-                className="absolute left-0 mt-2 origin-top-left shadow-gray-800 shadow-lg outline-none border border-[#AAB8C2] dark:border-gray-700 z-[100] rounded-2xl"
+                className="absolute left-0 mt-2 origin-top-left shadow-gray-800 shadow-lg outline-none border border-[#C8B9B1] dark:border-gray-700 z-[100] rounded-2xl"
               >
                 <div className="bg-white dark:bg-black rounded-2xl w-full h-full">
                   <Picker

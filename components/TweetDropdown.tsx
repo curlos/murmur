@@ -120,7 +120,7 @@ export const TweetDropdown = ({ tweet, author, authorId, deleteTweet }: Props) =
       setTweetSentAlert({
         isVisible: true,
         tweetId: '',
-        message: 'Tweet text copied'
+        message: 'Post text copied'
       });
     } catch (error) {
       console.error('Failed to copy tweet text:', error);
@@ -135,7 +135,7 @@ export const TweetDropdown = ({ tweet, author, authorId, deleteTweet }: Props) =
       setTweetSentAlert({
         isVisible: true,
         tweetId: '',
-        message: 'Tweet text copied'
+        message: 'Post text copied'
       });
     }
   };
@@ -190,7 +190,7 @@ export const TweetDropdown = ({ tweet, author, authorId, deleteTweet }: Props) =
               >
                 <Menu.Items
                   static
-                  className="absolute right-0 w-56 mt-2 origin-top-right divide-y rounded-md shadow-gray-400 dark:shadow-gray-800 shadow-lg outline-none border border-[#AAB8C2] dark:border-gray-700 z-[100]"
+                  className="absolute right-0 w-56 mt-2 origin-top-right divide-y rounded-md shadow-gray-400 dark:shadow-gray-800 shadow-lg outline-none border border-[#C8B9B1] dark:border-gray-700 z-[100]"
                 >
 
                   <div className="bg-white dark:bg-black rounded-md">
@@ -208,7 +208,7 @@ export const TweetDropdown = ({ tweet, author, authorId, deleteTweet }: Props) =
                       {/* Copy tweet text - available to all users */}
                       <DropdownMenuItem
                         icon={ClipboardCopyIcon}
-                        text="Copy tweet text"
+                        text="Copy post text"
                         onClick={handleCopyTweetText}
                       />
 
@@ -224,7 +224,7 @@ export const TweetDropdown = ({ tweet, author, authorId, deleteTweet }: Props) =
                         icon={ClockIcon}
                         text="View version history"
                         onClick={() => {
-                          router.push(`/tweet/${tweet.tweetId}/history`);
+                          router.push(`/post/${tweet.tweetId}/history`);
                         }}
                       />
                     </div>
@@ -239,7 +239,7 @@ export const TweetDropdown = ({ tweet, author, authorId, deleteTweet }: Props) =
                         <div className="py-1">
                           <DropdownMenuItem
                             icon={PencilIcon}
-                            text="Edit tweet"
+                            text="Edit post"
                             onClick={() => {
                               setIsOpen(true);
                               setTweetToEdit(tweet);
@@ -277,7 +277,7 @@ export const TweetDropdown = ({ tweet, author, authorId, deleteTweet }: Props) =
 
                           <DropdownMenuItem
                             icon={TrashIcon}
-                            text="Delete tweet"
+                            text="Delete post"
                             onClick={deleteTweet}
                             className="text-red-500"
                           />

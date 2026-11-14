@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 import { colorThemeState, authModalState } from '../atoms/atom';
 import { XIcon } from '@heroicons/react/solid';
 import { useRouter } from 'next/router';
-import { BsTwitter } from 'react-icons/bs';
+import MurmurLogo from './MurmurLogo';
 
 export const AuthModal = () => {
   const [isOpen, setIsOpen] = useRecoilState(authModalState);
@@ -55,7 +55,7 @@ export const AuthModal = () => {
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <div className="inline-block bg-white dark:bg-black rounded-2xl text-left overflow-hidden shadow-xl transform transition-all my-8 align-top max-w-md w-[95vw] lg:w-[400px]">
-              <div className="bg-white dark:bg-black p-3 border-b border-[#AAB8C2] dark:border-gray-700">
+              <div className="bg-white dark:bg-black p-3 border-b border-[#C8B9B1] dark:border-gray-700">
                 <div>
                   <XIcon className="h-7 w-7 cursor-pointer text-gray-700 dark:text-gray-400 dark:text-white hover:text-gray-500" onClick={handleClose} />
                 </div>
@@ -63,11 +63,11 @@ export const AuthModal = () => {
 
               <div className="bg-white dark:bg-black p-6 text-center">
                 <h2 className="text-2xl font-bold text-black dark:text-white mb-4 flex items-center justify-center gap-2">
-                  <BsTwitter className="h-8 w-8 text-lightblue-500" />
-                  Join Twitter 2.0 today
+                  <MurmurLogo className="h-8 w-8 text-lightblue-500" />
+                  Join Murmur today
                 </h2>
                 <p className="text-gray-700 dark:text-gray-400 mb-6">
-                  Sign up or log in to like, retweet, bookmark, and reply to tweets.
+                  Sign up or log in to like, repost, bookmark, and reply to posts.
                 </p>
 
                 <div className="space-y-3">

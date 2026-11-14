@@ -43,7 +43,7 @@ const ProfileButton = ({ onMenuItemClick }: ProfileButtonProps) => {
               >
                 <Menu.Items
                   static
-                  className="absolute -top-2 transform -translate-y-full left-0 w-[200px] xl:w-full origin-bottom-left divide-y rounded-md shadow-gray-800 shadow-lg outline-none border border-[#AAB8C2] dark:border-gray-700 z-[100]"
+                  className="absolute -top-2 transform -translate-y-full left-0 w-[200px] xl:w-full origin-bottom-left divide-y rounded-md shadow-gray-800 shadow-lg outline-none border border-[#C8B9B1] dark:border-gray-700 z-[100]"
                 >
                   <div className="p-1 bg-white dark:bg-black rounded-md">
                     <Menu.Item>

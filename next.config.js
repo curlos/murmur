@@ -33,6 +33,17 @@ module.exports = {
     esmExternals: true,
   },
 
+  // Old "/tweet/..." URLs (from before the Murmur rebrand) redirect to "/post/..."
+  async redirects() {
+    return [
+      {
+        source: '/tweet/:path*',
+        destination: '/post/:path*',
+        permanent: true,
+      },
+    ];
+  },
+
   // Configure headers for better caching
   async headers() {
     return [

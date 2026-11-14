@@ -30,7 +30,7 @@ const ParentTweet = ({ tweetBeingRepliedToId, isQuoteTweet, fromTweetModal = fal
   const handleTweetClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!fromTweetModal && isQuoteTweet) {
-      router.push(`/tweet/${tweetBeingRepliedToId}`);
+      router.push(`/post/${tweetBeingRepliedToId}`);
     }
   };
 
@@ -78,7 +78,7 @@ const ParentTweet = ({ tweetBeingRepliedToId, isQuoteTweet, fromTweetModal = fal
   const DeletedQuoteTweet = () => (
     <div className="border border-gray-300 dark:border-gray-700 rounded-2xl p-4">
       <div className="bg-gray-200 border border-gray-300 text-gray-500 dark:text-gray-400 rounded-xl p-3 text-base dark:border-gray-700 dark:bg-gray-800">
-        This Tweet is unavailable.
+        This post is unavailable.
       </div>
     </div>
   );

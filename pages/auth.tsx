@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import MurmurLogo from '../components/MurmurLogo';
 import Link from 'next/link';
 import { SearchIcon, UsersIcon, ChatIcon } from '@heroicons/react/outline';
 import { getProviders, signIn } from 'next-auth/react';
@@ -138,8 +138,8 @@ const Auth = () => {
     <div className={`${theme}`}>
       <div className="text-black dark:text-white flex min-h-screen w-screen max-w-full">
         <Head>
-          <title>Login to Twitter 2.0</title>
-          <link rel="icon" href="/assets/twitter-logo.svg" />
+          <title>Login to Murmur</title>
+          <link rel="icon" href="/assets/murmur-logo.svg" />
         </Head>
 
         {/* Navigation header */}
@@ -171,9 +171,9 @@ const Auth = () => {
 
         <div className="flex-1 flex justify-center items-center p-4 sm:p-12 lg:p-24 bg-white dark:bg-black">
           <div>
-            <Image src="/assets/twitter-logo.svg" alt="Twitter Logo" height={30} width={30} className="text-lightblue-500" />
+            <MurmurLogo className="h-[30px] w-[30px] text-lightblue-500" />
             <h2 className="text-2xl font-bold">See what's happening in the world right now</h2>
-            <h6 className="font-bold">Join Twitter 2.0 today</h6>
+            <h6 className="font-bold">Join Murmur today</h6>
 
             {/* Credential-based authentication form */}
             <form onSubmit={handleCredentialAuth} className="space-y-4 my-6">

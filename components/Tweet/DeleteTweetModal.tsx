@@ -51,11 +51,11 @@ const DeleteTweetModal: React.FC<DeleteTweetModalProps> = ({
               {/* Header */}
               <div className="mb-4">
                 <Dialog.Title as="h3" className="text-xl font-bold text-black dark:text-white">
-                  Delete this tweet?
+                  Delete this post?
                 </Dialog.Title>
                 <div className="mt-2">
                   <p className="text-gray-600 dark:text-gray-300">
-                    If you remove this tweet, you won't be able to recover it.
+                    If you remove this post, you won't be able to recover it.
                   </p>
                 </div>
               </div>

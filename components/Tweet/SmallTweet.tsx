@@ -43,7 +43,7 @@ const SmallTweet = ({
   const handleClick = (e) => {
     if (!pastTweet) {
       e.stopPropagation();
-      router.push(`/tweet/${tweetID}`);
+      router.push(`/post/${tweetID}`);
     }
   };
 
@@ -58,8 +58,8 @@ const SmallTweet = ({
                 <FaRetweet className="h-[18px] w-[18px] mr-2 mb-2" />
                 <span className="truncate max-w-[200px]">
                   {session && session.user && retweetedBy.tag === session.user.tag
-                    ? "You retweeted"
-                    : `${retweetedBy.name} retweeted`}
+                    ? "You reposted"
+                    : `${retweetedBy.name} reposted`}
                 </span>
               </span>
             </Link>

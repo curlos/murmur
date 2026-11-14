@@ -76,7 +76,7 @@ const News: React.FC = () => {
   };
 
   return (
-    <AppLayout title="News - Twitter 2.0">
+    <AppLayout title="News - Murmur">
       <main className="flex-1 min-h-screen border-l border-r border-gray-200 dark:border-gray-800">
         {/* Header */}
         <div className="sticky top-0 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800 z-10">

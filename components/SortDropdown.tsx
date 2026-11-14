@@ -14,7 +14,7 @@ interface Props {
  */
 export const SortDropdown = ({ sortType, setSortType, options }: Props) => {
 
-  const defaultOptions = ['Newest', 'Oldest', 'Most Likes', 'Most Replies', 'Most Bookmarks', 'Most Retweets'];
+  const defaultOptions = ['Newest', 'Oldest', 'Most Likes', 'Most Replies', 'Most Bookmarks', 'Most Reposts'];
   const dropdownOptions = options || defaultOptions;
 
   return (
@@ -43,7 +43,7 @@ export const SortDropdown = ({ sortType, setSortType, options }: Props) => {
               >
                 <Menu.Items
                   static
-                  className="absolute right-0 w-56 mt-2 origin-top-right rounded-md shadow-gray-800 shadow-lg outline-none border border-[#AAB8C2] dark:border-gray-700 z-[100] mr-5"
+                  className="absolute right-0 w-56 mt-2 origin-top-right rounded-md shadow-gray-800 shadow-lg outline-none border border-[#C8B9B1] dark:border-gray-700 z-[100] mr-5"
                 >
                   {dropdownOptions.map((option, index) => {
                     const isFirst = index === 0;

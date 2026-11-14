@@ -27,19 +27,19 @@ const ReplyInfoModal: React.FC<ReplyInfoModalProps> = ({
     if (hideReplies) {
       return {
         title: 'Replies are disabled',
-        description: 'The author has disabled replies for this tweet.'
+        description: 'The author has disabled replies for this post.'
       };
     }
 
     if (allowRepliesFrom.includes('everybody')) {
       return {
         title: 'Everyone can reply',
-        description: 'Anyone can reply to this tweet.'
+        description: 'Anyone can reply to this post.'
       };
     } else if (allowRepliesFrom.includes('nobody')) {
       return {
         title: 'Replies are disabled',
-        description: 'The author has disabled replies for this tweet.'
+        description: 'The author has disabled replies for this post.'
       };
     } else {
       const settings = [];
@@ -56,7 +56,7 @@ const ReplyInfoModal: React.FC<ReplyInfoModalProps> = ({
       } else if (settings.length === 2) {
         description += settings[0] + ' or ' + settings[1];
       }
-      description += ' can reply to this tweet.';
+      description += ' can reply to this post.';
 
       return {
         title: 'Some people can reply',
