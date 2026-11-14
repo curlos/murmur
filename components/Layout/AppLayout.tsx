@@ -12,6 +12,8 @@ import { AuthModal } from '../AuthModal';
 import { EditInteractionSettingsModal } from '../EditInteractionSettingsModal';
 import { TweetSentAlert } from '../TweetSentAlert';
 
+const SITE_DESCRIPTION = 'Murmur is a social platform for short posts: follow people, reply, repost, and keep up with the news in real time.';
+
 interface AppLayoutProps {
   children: React.ReactNode;
   title?: string;
@@ -39,6 +41,12 @@ const AppLayout: React.FC<AppLayoutProps> = ({
           <Head>
             <title>{title}</title>
             <link rel="icon" href="/assets/murmur-logo.svg" />
+            {/* Link preview info (shown when the site is shared on LinkedIn, Slack, iMessage, etc.) */}
+            <meta name="description" content={SITE_DESCRIPTION} />
+            <meta property="og:site_name" content="Murmur" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content={title} />
+            <meta property="og:description" content={SITE_DESCRIPTION} />
           </Head>
 
           <main className={`bg-white text-black dark:bg-black dark:text-white min-h-screen flex`}>

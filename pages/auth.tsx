@@ -154,17 +154,17 @@ const Auth = () => {
           <div className="space-y-5">
             <div className="flex space-x-3">
               <SearchIcon className="h-5 w-5" />
-              <p>Follow your interests.</p>
+              <p>Find people worth following.</p>
             </div>
 
             <div className="flex space-x-3">
               <UsersIcon className="h-5 w-5" />
-              <p>Hear what people are talking about.</p>
+              <p>Keep up with the news in one feed.</p>
             </div>
 
             <div className="flex space-x-3">
               <ChatIcon className="h-5 w-5" />
-              <p>Join the conversation.</p>
+              <p>Post, reply, and share what you think.</p>
             </div>
           </div>
         </div>
@@ -172,7 +172,7 @@ const Auth = () => {
         <div className="flex-1 flex justify-center items-center p-4 sm:p-12 lg:p-24 bg-white dark:bg-black">
           <div>
             <MurmurLogo className="h-[30px] w-[30px] text-lightblue-500" />
-            <h2 className="text-2xl font-bold">See what's happening in the world right now</h2>
+            <h2 className="text-2xl font-bold">Short posts. Real conversations.</h2>
             <h6 className="font-bold">Join Murmur today</h6>
 
             {/* Credential-based authentication form */}

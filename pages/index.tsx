@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react';
-import { FaFeatherAlt } from 'react-icons/fa';
+import { FaPen } from 'react-icons/fa';
 import { useRecoilState } from 'recoil';
 import { newTweetModalState, authModalState } from '../atoms/atom';
 import Feed from '../components/Feed';
@@ -15,14 +15,14 @@ export default function Home() {
     <AppLayout title="Murmur">
       <Feed />
 
-      <div className="sm:hidden text-black dark:text-white  bg-lightblue-400 flex justify-center items-center rounded-full p-4 fixed bottom-0 right-0 mr-4 mb-16 cursor-pointer" onClick={() => {
+      <div className="sm:hidden text-black dark:text-white  bg-lightblue-500 flex justify-center items-center rounded-full p-4 fixed bottom-0 right-0 mr-4 mb-16 cursor-pointer" onClick={() => {
         if (!session) {
           setAuthModalOpen(true);
           return;
         }
         setIsNewTweetModalOpen(true);
       }}>
-        <FaFeatherAlt className="h-7 w-7 text-white" />
+        <FaPen className="h-7 w-7 text-white" />
       </div>
     </AppLayout>
   );

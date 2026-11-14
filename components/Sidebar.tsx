@@ -14,7 +14,7 @@ import { useSession } from "next-auth/react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { colorThemeState, newTweetModalState, searchModalState, authModalState } from "../atoms/atom";
 import { useRouter } from "next/router";
-import { FaFeatherAlt, FaSearch } from "react-icons/fa";
+import { FaPen, FaSearch } from "react-icons/fa";
 import MurmurLogo from "./MurmurLogo";
 
 /**
@@ -91,15 +91,15 @@ const Sidebar = () => {
           Post
         </button>
 
-        {/* This is for mobile which by default will show the blue feather to post a tweet. I could remove it if the user is not logged in but for the purpose of the site, I think it'd be better to leave it there and link to the auth page if the user wants to tweet. */}
-        <div className="text-white bg-lightblue-400 flex justify-center items-center rounded-full p-4 xl:hidden cursor-pointer" onClick={() => {
+        {/* This is for mobile which by default will show the pen button to write a post. I could remove it if the user is not logged in but for the purpose of the site, I think it'd be better to leave it there and link to the auth page if the user wants to tweet. */}
+        <div className="text-white bg-lightblue-500 flex justify-center items-center rounded-full p-4 xl:hidden cursor-pointer" onClick={() => {
           if (!session) {
             setAuthModalOpen(true);
             return;
           }
           setIsOpen(true);
         }}>
-          <FaFeatherAlt className="h-5 w-5" />
+          <FaPen className="h-5 w-5" />
         </div>
       </div>
 

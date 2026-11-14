@@ -549,7 +549,7 @@ const Input = ({ tweetToEdit, setTweetToEdit, tweetBeingRepliedToId, isNewReply,
             <TextareaAutosize
               value={input}
               onChange={handleTextChange}
-              className={`bg-white dark:bg-black text-black dark:text-white outline-none placeholder-gray-400 min-h-[60px] w-full resize-none font-sans text-lg`} placeholder="What's happening?" />
+              className={`bg-white dark:bg-black text-black dark:text-white outline-none placeholder-gray-400 min-h-[60px] w-full resize-none font-sans text-lg`} placeholder="Share something..." />
 
             {selectedFiles.length > 0 && (
               <div className="py-3">
@@ -647,7 +647,7 @@ const Input = ({ tweetToEdit, setTweetToEdit, tweetBeingRepliedToId, isNewReply,
               <TextareaAutosize
                 value={input}
                 onChange={handleTextChange}
-                className={`bg-white dark:bg-black text-black dark:text-white outline-none placeholder-gray-400 min-h-[60px] w-full resize-none font-sans text-lg`} placeholder="What's happening?" />
+                className={`bg-white dark:bg-black text-black dark:text-white outline-none placeholder-gray-400 min-h-[60px] w-full resize-none font-sans text-lg`} placeholder="Share something..." />
 
               {selectedFiles.length > 0 && (
                 <div className="py-3">

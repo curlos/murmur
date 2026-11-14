@@ -24,7 +24,7 @@ const Widgets = () => {
   }, []);
 
   /**
-   * @description - Get the latest news to display on the "What's happening" section.
+   * @description - Get the latest news to display on the "Latest news" section.
    */
   const getData = async () => {
     try {
@@ -73,7 +73,7 @@ const Widgets = () => {
       {/* Displays the current, trending events of the day. Right now, will display ONLY video game news. */}
       {router.pathname !== '/news' && (
         <div className="bg-gray-200 dark:bg-gray-800 rounded-lg py-3 w-[350px]">
-          <h2 className="text-xl font-bold mb-4 px-3">What's happening</h2>
+          <h2 className="text-xl font-bold mb-4 px-3">Latest news</h2>
 
           {isLoadingNews ? (
             <div className="py-4">
